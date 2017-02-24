@@ -1,0 +1,42 @@
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @article.date %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @article.src_name %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @article.src_url %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @article.country %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @article.author %>
+</p>
+
+<p>
+  <strong>Keywords:</strong>
+  <%= @article.keywords %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
