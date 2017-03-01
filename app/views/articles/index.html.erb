@@ -12,6 +12,7 @@
  
 <table>
   <tr>
+    <th>Translated title</th>
     <th>Title</th>
     <th>Date</th>
     <th>Source</th>
@@ -24,6 +25,7 @@
  
   <% @articles.each do |article| %>
     <tr>
+      <td><%= article.title_rus %></td>
       <td><%= article.title %></td>
       <td><%= article.date %></td>
       <td><%= article.src_name %></td>
