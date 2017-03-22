@@ -29,7 +29,7 @@
       <td><%= article.title_rus %></td>
       <td><%= article.title %></td>
       <td><%= article.date %></td>
-      <td><%= link_to "source", article.src_url %></td>
+      <td><%= link_to URI(article.src_url).host, article.src_url %></td>
       <td><%= article.country %></td>
       <td><%= article.category %></td>
       <td><%= article.keywords %></td>
