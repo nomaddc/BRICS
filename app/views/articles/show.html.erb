@@ -15,7 +15,7 @@
 
 <p>
   <strong>Link:</strong>
-  <%= link_to "source", @article.src_url %>
+  <%= link_to URI(@article.src_url).host, @article.src_url %>
 </p>
 
 <p>
