@@ -24,7 +24,6 @@
   </tr>
 
   <% @articles.each do |article| %>
-    <% if article.is_active %>
     <tr>
       <td><%= article.id %></td>
       <td><%= article.title_rus %></td>
@@ -40,7 +39,6 @@
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
-    <% end %>
   <% end %>
 </table>
 <br>

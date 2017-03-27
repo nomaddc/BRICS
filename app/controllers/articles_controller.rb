@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "edt", password: "pass", except: [:index, :show]
 
   def index
-    @articles = Article.paginate(:per_page => 15, :page => params[:page])
+    @articles = Article.where(is_active: true).paginate(:per_page => 15, :page => params[:page])
   end
  
   def show
@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
   end
 
   def undelete
-    @articles = Article.paginate(:per_page => 15, :page => params[:page])
+    @articles = Article.where(is_active: false).paginate(:per_page => 15, :page => params[:page])
   end
   
   def undestroy
@@ -59,6 +59,6 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title_rus, :title, :date, :src_url, :country, :author, :category, :keywords, :text)
+      params.require(:article).permit(:title_rus, :title, :date, :src_url, :country, :author, :category, :keywords, :text, :lang)
     end
 end
