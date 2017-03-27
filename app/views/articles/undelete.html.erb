@@ -8,7 +8,7 @@
 
 <h1>Listing entries</h1>
 
-<%= link_to 'New entry', new_article_path %>
+<%= link_to 'Back', articles_path %>
 <br><br>
 <table>
   <tr>
@@ -24,7 +24,7 @@
   </tr>
 
   <% @articles.each do |article| %>
-    <% if article.is_active %>
+    <% if !article.is_active %>
     <tr>
       <td><%= article.id %></td>
       <td><%= article.title_rus %></td>
@@ -36,8 +36,8 @@
       <td><%= article.keywords %></td>
       <td><%= link_to 'Show', article_path(article) %></td>
       <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Delete', article_path(article),
-              method: :delete,
+      <td><%= link_to 'Undelete', undestroy_article_path(article),
+              method: :put,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
