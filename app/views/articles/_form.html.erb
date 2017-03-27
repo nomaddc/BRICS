@@ -1,4 +1,4 @@
-<%= form_for @article do |f| %>
+﻿<%= form_for @article do |f| %>
  
   <% if @article.errors.any? %>
     <div id="error_explanation">
@@ -46,7 +46,21 @@
 
   <p>
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.select :category, [
+      '',
+      'международные отношения',
+      'экономика',
+      'внутренняя политика',
+      'мир труда',
+      'документы',
+      'другие материалы',
+      'international relations',
+      'investment and finance',
+      'political events',
+      'world of work',
+      'documents',
+      'other materials'
+    ] %>
   </p>
 
   <p>

@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "edt", password: "pass", except: [:index, :show]
 
   def index
-    @articles = Article.all
+    @article = Article.paginate(:per_page => 15, :page => params[:page])
   end
  
   def show
