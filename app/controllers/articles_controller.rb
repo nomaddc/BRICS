@@ -45,6 +45,18 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def undelete
+    @articles = Article.paginate(:per_page => 15, :page => params[:page])
+  end
+  
+  def undestroy
+    @article = Article.find(params[:id])
+    @article.update(:is_active => true)
+ 
+    redirect_to undelete_articles_path
+  end
+
+
   private
     def article_params
       params.require(:article).permit(:title_rus, :title, :date, :src_url, :country, :author, :category, :keywords, :text)
