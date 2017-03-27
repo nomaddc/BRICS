@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327214925) do
+ActiveRecord::Schema.define(version: 20170327232104) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170327214925) do
     t.string   "title_rus"
     t.string   "category"
     t.boolean  "is_active",  default: true, null: false
+    t.string   "lang"
   end
 
 end
