@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "edt", password: "pass", except: [:index, :show]
 
   def index
-    @article = Article.paginate(:per_page => 15, :page => params[:page])
+    @articles = Article.paginate(:per_page => 15, :page => params[:page])
   end
  
   def show
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
  
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
+    @article.update(:is_active => false)
  
     redirect_to articles_path
   end
