@@ -46,7 +46,7 @@
       'world of work',
       'documents',
       'other materials'], params[:category]) %></th>
-      <th><%= text_field_tag :keywords, params[:keywords] %></th>
+      <th></th>
       <th><%= select_tag :lang, options_for_select(['', 'rus', 'eng'], params[:lang]) %></th>
       <th colspan ='3'><%= submit_tag "Filter", :name => nil %></th>
     </tr>
