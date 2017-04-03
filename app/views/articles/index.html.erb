@@ -1,4 +1,4 @@
-<style>
+﻿<style>
   table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
@@ -21,8 +21,36 @@
     <th>Category</th>
     <th>Keywords</th>
     <th>Language</th>
-    <th colspan="3">Controls</th>
+    <th colspan='3'>Controls</th>
   </tr>
+
+  <%= form_tag articles_path, :method => 'get' do %>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th><%= date_field_tag :date, params[:date] %></th>
+      <th><%= text_field_tag :src_url, params[:src_url] %></th>
+      <th><%= text_field_tag :country, params[:country] %></th>
+      <th><%= select_tag :category, options_for_select([
+      '',
+      'международные отношения',
+      'экономика',
+      'внутренняя политика',
+      'мир труда',
+      'документы',
+      'другие материалы',
+      'international relations',
+      'investment and finance',
+      'political events',
+      'world of work',
+      'documents',
+      'other materials'], params[:category]) %></th>
+      <th><%= text_field_tag :keywords, params[:keywords] %></th>
+      <th><%= text_field_tag :lang, params[:lang] %></th>
+      <th colspan ='3'><%= submit_tag "Filter", :name => nil %></th>
+    </tr>
+  <% end %>
 
   <% @articles.each do |article| %>
     <tr>
