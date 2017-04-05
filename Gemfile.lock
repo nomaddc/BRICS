@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/nomaddc/country_select.git
+  revision: e480fe5c9c9f41aea478b5cc710b3793f8adfe66
+  specs:
+    country_select (3.0.0)
+      countries (~> 2.0)
+      sort_alphabetical (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,9 +61,6 @@ GEM
       money (~> 6.7)
       sixarm_ruby_unaccent (~> 1.1)
       unicode_utils (~> 1.4)
-    country_select (3.0.0)
-      countries (~> 2.0)
-      sort_alphabetical (~> 1.0)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -162,7 +167,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
-  country_select
+  country_select!
   jbuilder (~> 2.5)
   jquery-rails
   puma
