@@ -31,6 +31,7 @@
       <th><%= text_field_tag :title, params[:title] %></th>
       <th><%= date_field_tag :date, params[:date] %></th>
       <th><%= text_field_tag :src_url, params[:src_url] %></th>
+      <th><%= country_select(nil, :country, { priority_countries: %w(RU BR IN CN ZA), include_blank: true, selected: params[:country] }, {}) %></th>
       <th><%= select_tag :category, options_for_select([
       '',
       'международные отношения',
