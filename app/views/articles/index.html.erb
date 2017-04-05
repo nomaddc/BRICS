@@ -27,11 +27,11 @@
   <%= form_tag articles_path, :method => 'get' do %>
     <tr>
       <th></th>
-      <th></th>
-      <th></th>
+      <th><%= text_field_tag :title_rus, params[:title_rus] %></th>
+      <th><%= text_field_tag :title, params[:title] %></th>
       <th><%= date_field_tag :date, params[:date] %></th>
       <th><%= text_field_tag :src_url, params[:src_url] %></th>
-      <th><%= text_field_tag :country, params[:country] %></th>
+      <th><%= country_select(nil, :country, { priority_countries: %w(RU BR IN CN ZA), prompt: ''}, {}) %></th>
       <th><%= select_tag :category, options_for_select([
       '',
       'международные отношения',
@@ -46,7 +46,7 @@
       'world of work',
       'documents',
       'other materials'], params[:category]) %></th>
-      <th></th>
+      <th><%= text_field_tag :keywords, params[:keywords] %></th>
       <th><%= select_tag :lang, options_for_select(['', 'rus', 'eng'], params[:lang]) %></th>
       <th colspan ='3'><%= submit_tag "Filter", :name => nil %></th>
     </tr>
