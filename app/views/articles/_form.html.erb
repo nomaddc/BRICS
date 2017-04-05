@@ -36,7 +36,7 @@
 
   <p>
     <%= f.label :country %><br>
-    <%= f.text_field :country, style: 'width:100%;' %>
+    <%= f.country_select :country, { priority_countries: %w(RU BR IN CN ZA), prompt: ''} %>
   </p>
 
   <p>
