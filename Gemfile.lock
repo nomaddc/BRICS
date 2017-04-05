@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/nomaddc/country_select.git
-  revision: e480fe5c9c9f41aea478b5cc710b3793f8adfe66
+  revision: d1008596824adc1e349edaca012f2db31dfd4338
   specs:
     country_select (3.0.0)
       countries (~> 2.0)
@@ -47,6 +47,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    bindex (0.5.0)
     builder (3.2.3)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -61,7 +62,6 @@ GEM
       money (~> 6.7)
       sixarm_ruby_unaccent (~> 1.1)
       unicode_utils (~> 1.4)
-    debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.7.0)
     globalid (0.3.7)
@@ -148,13 +148,13 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2017.2)
       tzinfo (>= 1.0.0)
-    uglifier (3.1.10)
+    uglifier (3.1.13)
       execjs (>= 0.3.0, < 3)
     unicode_utils (1.4.0)
-    web-console (3.4.0)
+    web-console (3.5.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
-      debug_inspector
+      bindex (>= 0.4.0)
       railties (>= 5.0)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
