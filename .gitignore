@@ -21,3 +21,4 @@
 .byebug_history
 
 cmd.exe.lnk
+db/development.sqlite3.bak
