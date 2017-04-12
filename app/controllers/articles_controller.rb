@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  http_basic_authenticate_with name: "edt", password: "pass", except: [:index, :show]
+  http_basic_authenticate_with name: "edt", password: "passqwe", except: [:index, :show]
 
   def index
     @articles = Article.filter(params.slice(:category, :country, :src_url, :date, :lang, :keywords, :title, :title_rus)).where(is_active: true).paginate(:per_page => 15, :page => params[:page])
