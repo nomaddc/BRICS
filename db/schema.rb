@@ -12,19 +12,19 @@
 
 ActiveRecord::Schema.define(version: 20170410010617) do
 
-  create_table "articles", force: :cascade do |t|
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.date     "date"
-    t.string   "src_url"
+    t.text     "src_url",    limit: 4294967295
     t.string   "country"
     t.string   "author"
     t.string   "keywords"
-    t.text     "text"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "text",       limit: 4294967295
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "title_rus"
     t.string   "category"
-    t.boolean  "is_active",  default: true, null: false
+    t.boolean  "is_active",                     default: true, null: false
     t.string   "lang"
   end
 
