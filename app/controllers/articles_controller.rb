@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.filter(params.slice(:category, :country, :src_url, :date, :lang, :keywords, :title, :title_rus)).where(is_active: true).paginate(:per_page => 15, :page => params[:page])
+    @results = Article.search(params[:search])
   end
  
   def show

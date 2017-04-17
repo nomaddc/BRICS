@@ -22,7 +22,6 @@
 
 cmd.exe.lnk
 db/development.sqlite3.bak
-config/secrets.yml
 db/sphinx/*
 config/development.sphinx.conf
 config/thinking_sphinx.yml
