@@ -38,3 +38,4 @@ gem 'coffee-script-source', '1.8.0'
 gem 'will_paginate'
 gem 'country_select', :git => "https://github.com/nomaddc/country_select.git"
 gem 'mysql2'
+gem 'thinking-sphinx'
