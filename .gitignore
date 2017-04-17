@@ -22,7 +22,6 @@
 
 cmd.exe.lnk
 db/development.sqlite3.bak
-Gemfile.lock
 config/secrets.yml
 db/sphinx/*
 config/development.sphinx.conf
