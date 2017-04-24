@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  self.per_page = 9
   include Filterable
   validates :title_rus, presence: true, length: { minimum: 5 }
   validates :country, presence: true, length: { minimum: 2 }
