@@ -39,3 +39,5 @@ gem 'will_paginate'
 gem 'country_select', :git => "https://github.com/nomaddc/country_select.git"
 gem 'mysql2'
 gem 'thinking-sphinx'
+gem "chartkick"
+gem 'groupdate'

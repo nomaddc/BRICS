@@ -1,10 +1,5 @@
-﻿<style>
-  table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 5px;
-  }
-</style>
+﻿<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+
 
 <h1>Listing entries</h1>
 
@@ -127,3 +122,7 @@
 </table>
 <br>
 <%= will_paginate @results %>
+<br><br>
+<%= pie_chart Article.group(:category).count %>
+<%= area_chart Article.group_by_day(:date).count %>
+<%= line_chart Article.group_by_day(:date).count %>
