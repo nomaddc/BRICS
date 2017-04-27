@@ -124,5 +124,6 @@
 <%= will_paginate @results %>
 <br><br>
 <%= pie_chart Article.group(:category).count %>
+<%= pie_chart Article.group(:country).count %>
 <%= area_chart Article.group_by_day(:date).count %>
 <%= line_chart Article.group_by_day(:date).count %>
