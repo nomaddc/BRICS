@@ -5,13 +5,6 @@
 
 <%= link_to 'New entry', new_article_path %>
 <br><br>
-<%= form_tag articles_path, :enforce_utf8 => false, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-<br><br>
 <table>
   <tr>
     <th>ID</th>
