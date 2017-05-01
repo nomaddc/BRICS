@@ -3,8 +3,11 @@ class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "edt", password: "pass", except: [:index, :show]
 
   def index
-    @articles = Article.filter(params.slice(:category, :country, :src_url, :date, :lang, :keywords, :title, :title_rus)).where(is_active: true).paginate(:page => params[:page])
-    @results = Article.search(params[:search], :page => params[:page], :per_page => 9, :order => :id)
+    if params[:search] == nil
+      @articles = Article.filter(params.slice(:category, :country, :src_url, :date, :lang, :keywords, :title, :title_rus)).where(is_active: true).paginate(:page => params[:page])
+    else
+      @articles = Article.search(params[:search], :without => {:is_active => false}, :page => params[:page], :per_page => 9, :order => :id)
+    end
 
     @countries = ISO3166::Country.countries.sort_by do |country|
       priority_index = PRIORITY_COUNTRIES.index(country.alpha2)
