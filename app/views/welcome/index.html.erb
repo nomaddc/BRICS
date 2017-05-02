@@ -8,21 +8,43 @@
     <div class="col-xs-6"><h3><%= link_to 'Go to Database', controller: 'articles' %></h3></div>
   </div>
   <div class="row">
-    <div class="col-xs-6">Количество текстов по тематическим разделам Бюллетеня</div>
-    <div class="col-xs-6">Количество текстов, помещённых в Бюллетень</div>
+    <div class="col-xs-6"><h4>Total Bulletin entries by category</h4></div>
+    <div class="col-xs-6"><h4>Количество текстов по тематическим разделам Бюллетеня</h4></div>
   </div>
   <div class="row">
-    <div class="col-xs-6"><%= pie_chart @articles.group(:category).count %></div>
-    <div class="col-xs-6"><%= line_chart @articles.group_by_month(:date).count.map { |x,y| { x => (@sum += y)}}.reduce({}, :merge) %></div>
+    <div class="col-xs-6">Eng</div>
+    <div class="col-xs-6">Rus</div>
   </div>
   <div class="row">
-    <div class="col-xs-12">Частотные диаграммы встречаемости ключевых слов</div>
+    <div class="col-xs-6"><%= pie_chart @articles.where(:lang => 'eng').group(:category).count %></div>
+    <div class="col-xs-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count %></div>
   </div>
   <div class="row">
-    <div class="col-xs-12"><%= bar_chart @articles.group(:keywords).count %></div>
+    <div class="col-xs-6"><h4>Total texts in Bulletin<h4></div>
+    <div class="col-xs-6"><h4>Количество текстов, помещённых в Бюллетень<h4></div>
   </div>
   <div class="row">
-    <div class="col-xs-12">карты многомерного шкалирования совместной встречаемости ключевых слов по всему информационному массиву</div>
+    <div class="col-xs-6">Eng</div>
+    <div class="col-xs-6">Rus</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6"><%= line_chart @articles.where(:lang => 'eng').group_by_month(:date, last: 12).count.map { |x,y| { x => (@sume += y)}}.reduce({}, :merge) %></div>
+    <div class="col-xs-6"><%= line_chart @articles.where(:lang => 'rus').group_by_month(:date, last: 12).count.map { |x,y| { x => (@sumr += y)}}.reduce({}, :merge) %></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6"><h4>Keyword frequency diagrams<h4></div>
+    <div class="col-xs-6"><h4>Частотные диаграммы встречаемости ключевых слов<h4></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">Eng</div>
+    <div class="col-xs-6">Rus</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6"><%= bar_chart @articles.where(:lang => 'eng').group(:keywords).count %></div>
+    <div class="col-xs-6"><%= bar_chart @articles.where(:lang => 'rus').group(:keywords).count %></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12"><h4>Карты многомерного шкалирования совместной встречаемости ключевых слов по всему информационному массиву?????<h4></div>
   </div>
   <div class="row">
     <div class="col-xs-12">
