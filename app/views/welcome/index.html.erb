@@ -11,7 +11,7 @@
   </div>
   <div class="row">
     <div class="col-xs-6"><%= pie_chart @articles.group(:category).count %></div>
-    <div class="col-xs-6"><%= line_chart @articles.group_by_month(:date).order("date asc").count.map { |x,y| { x => (@sum += y)}}.reduce({}, :merge) %></div>
+    <div class="col-xs-6"><%= line_chart @articles.group_by_month(:date).count.map { |x,y| { x => (@sum += y)}}.reduce({}, :merge) %></div>
   </div>
   <div class="row">
     <div class="col-xs-12">Частотные диаграммы встречаемости ключевых слов</div>
