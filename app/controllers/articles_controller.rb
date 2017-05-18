@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:search] == nil
-      @articles = Article.filter(params.slice(:category, :country, :src_url, :date, :lang, :keywords, :title, :title_rus)).where(is_active: true).paginate(:page => params[:page])
+      @articles = Article.filter(params.slice(:category, :country, :src_url, :date, :lang, :keywords, :title, :title_rus, :rel)).where(is_active: true).order('id DESC').paginate(:page => params[:page])
     else
       @articles = Article.search(params[:search], :without => {:is_active => false}, :page => params[:page], :per_page => 9, :order => :id)
     end
@@ -72,6 +72,6 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title_rus, :title, :date, :src_url, :country, :author, :category, :keywords, :text, :lang)
+      params.require(:article).permit(:title_rus, :title, :date, :src_url, :country, :author, :category, :keywords, :text, :lang, :rel)
     end
 end

@@ -17,4 +17,5 @@ class Article < ApplicationRecord
   scope :keywords, -> (keywords) { where('keywords like ?', "%#{keywords}%")}
   scope :title_rus, -> (title_rus) { where('title_rus like ?', "%#{title_rus}%")}
   scope :title, -> (title) { where('title LIKE ?', "%#{title}%")}
+  scope :rel, -> (rel) { where rel: rel }
 end

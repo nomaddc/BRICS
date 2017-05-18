@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505094118) do
+ActiveRecord::Schema.define(version: 20170518111748) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -20,12 +20,13 @@ ActiveRecord::Schema.define(version: 20170505094118) do
     t.string   "author"
     t.string   "keywords"
     t.text     "text",       limit: 4294967295
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
     t.string   "title_rus"
     t.string   "category"
-    t.boolean  "is_active",                     default: true, null: false
+    t.boolean  "is_active",                                    default: true, null: false
     t.string   "lang"
+    t.decimal  "rel",                           precision: 10
   end
 
 end
