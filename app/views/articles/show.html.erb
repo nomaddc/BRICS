@@ -1,52 +1,58 @@
-<p>
-  <strong>Title (russian):</strong>
-  <%= @article.title_rus %>
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+        <strong>Title (russian):</strong>
+        <%= @article.title_rus %>
+      </p>
 
-<p>
-  <strong>Title (english):</strong>
-  <%= @article.title %>
-</p>
+      <p>
+        <strong>Title (english):</strong>
+        <%= @article.title %>
+      </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @article.date %>
-</p>
+      <p>
+        <strong>Date:</strong>
+        <%= @article.date %>
+      </p>
 
-<p>
-  <strong>Link:</strong>
-  <%= link_to URI(@article.src_url).host, @article.src_url %>
-</p>
+      <p>
+        <strong>Link:</strong>
+        <%= link_to URI(@article.src_url).host, @article.src_url %>
+      </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @article.country %>
-</p>
+      <p>
+        <strong>Country:</strong>
+        <%= @article.country %>
+      </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @article.author %>
-</p>
+      <p>
+        <strong>Author:</strong>
+        <%= @article.author %>
+      </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @article.category %>
-</p>
+      <p>
+        <strong>Category:</strong>
+        <%= @article.category %>
+      </p>
 
-<p>
-  <strong>Keywords:</strong>
-  <%= @article.keywords %>
-</p>
+      <p>
+        <strong>Keywords:</strong>
+        <%= @article.keywords %>
+      </p>
 
-<p>
-  <strong>Relevance:</strong>
-  <%= @article.rel %>
-</p>
+      <p>
+        <strong>Relevance:</strong>
+        <%= @article.rel %>
+      </p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+      <p>
+        <strong>Text:</strong>
+        <%= @article.text %>
+      </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+      <%= link_to 'Edit', edit_article_path(@article) %> |
+      <%= link_to 'Back', articles_path %>
+    </div>
+  </div>
+</div>

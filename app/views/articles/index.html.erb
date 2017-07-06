@@ -1,88 +1,150 @@
 ﻿<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Listing entries</h1>
+      <%= link_to 'New entry', new_article_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Sphinx search</h1>
+      <%= form_tag articles_path, :enforce_utf8 => false, :method => 'get', :class => 'form-inline'  do %>
+        <div class="form-group">
+          <%= text_field_tag :search, params[:search], class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-striped table-condensed" width="100%">
+        <tr>
+          <th>ID</th>
+          <th width="15%">Title (russian)</th>
+          <th width="15%">Title (english)</th>
+          <th>Date</th>
+          <th>Source</th>
+          <th>Country</th>
+          <th>Category</th>
+          <th>Keywords</th>
+          <th>Language</th>
+          <th>Relevance</th>
+          <th colspan='3' class="text-center">Controls</th>
+        </tr>
 
-<h1>Listing entries</h1>
+        <%= form_tag articles_path, :enforce_utf8 => false, :method => 'get' do %>
+          <tr>
+            <th></th>
+            <th>
+              <%= text_field_tag :title_rus, params[:title_rus], class: 'form-control' %>
+            </th>
+            <th>
+              <%= text_field_tag :title, params[:title], class: 'form-control' %>
+            </th>
+            <th>
+              <%= date_field_tag :date, params[:date], class: 'form-control' %>
+            </th>
+            <th>
+              <%= text_field_tag :src_url, params[:src_url], class: 'form-control' %>
+            </th>
+            <th>
+              <%= select_tag :country, options_from_collection_for_select(@countries, 'name', 'name', params[:country]), :include_blank => true, class: 'form-control' %>
+            </th>
+            <th>
+              <%= select_tag :category, options_for_select([
+                '',
+                'международные отношения',
+                'экономика',
+                'внутренняя политика',
+                'мир труда',
+                'документы',
+                'другие материалы',
+                'international relations',
+                'investment and finance',
+                'political events',
+                'world of work',
+                'documents',
+                'other materials'
+              ], params[:category]), class: 'form-control' %>
+            </th>
+            <th>
+              <%= text_field_tag :keywords, params[:keywords], class: 'form-control' %>
+            </th>
+            <th>
+              <%= select_tag :lang, options_for_select(['', 'rus', 'eng'], params[:lang]), class: 'form-control' %>
+            </th>
+            <th>
+              <%= select_tag :rel, options_for_select([
+                '',
+                '0',
+                '1',
+                '2',
+                '3',
+                '4',
+                '5'], params[:rel]), class: 'form-control' %>
+            </th>
+            <th class="text-center" colspan ='3'>
+              <%= submit_tag "Filter", :name => nil, class: 'btn btn-primary' %>
+            </th>
+          </tr>
+        <% end %>
 
-<%= link_to 'New entry', new_article_path %>
-<br><br>
-<h1>Sphinx search</h1>
-<%= form_tag articles_path, :enforce_utf8 => false, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-<br><br>
-<table width="100%">
-  <tr>
-    <th>ID</th>
-    <th>Title (russian)</th>
-    <th>Title (english)</th>
-    <th>Date</th>
-    <th>Source</th>
-    <th>Country</th>
-    <th>Category</th>
-    <th>Keywords</th>
-    <th>Language</th>
-    <th>Relevance</th>
-    <th colspan='3'>Controls</th>
-  </tr>
-
-  <%= form_tag articles_path, :enforce_utf8 => false, :method => 'get' do %>
-    <tr>
-      <th></th>
-      <th><%= text_field_tag :title_rus, params[:title_rus] %></th>
-      <th><%= text_field_tag :title, params[:title] %></th>
-      <th><%= date_field_tag :date, params[:date] %></th>
-      <th><%= text_field_tag :src_url, params[:src_url] %></th>
-      <th><%= select_tag :country, options_from_collection_for_select(@countries, 'name', 'name', params[:country]), :include_blank => true %></th>
-      <th><%= select_tag :category, options_for_select([
-      '',
-      'международные отношения',
-      'экономика',
-      'внутренняя политика',
-      'мир труда',
-      'документы',
-      'другие материалы',
-      'international relations',
-      'investment and finance',
-      'political events',
-      'world of work',
-      'documents',
-      'other materials'], params[:category]) %></th>
-      <th><%= text_field_tag :keywords, params[:keywords] %></th>
-      <th><%= select_tag :lang, options_for_select(['', 'rus', 'eng'], params[:lang]) %></th>
-      <th><%= select_tag :rel, options_for_select([
-      '',
-      '0',
-      '1',
-      '2',
-      '3',
-      '4',
-      '5'], params[:rel]) %></th>
-      <th colspan ='3'><%= submit_tag "Filter", :name => nil %></th>
-    </tr>
-  <% end %>
-
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.id %></td>
-      <td><%= article.title_rus %></td>
-      <td><%= article.title %></td>
-      <td><%= article.date %></td>
-      <td><%= link_to URI(article.src_url).host, article.src_url %></td>
-      <td><%= article.country %></td>
-      <td><%= article.category %></td>
-      <td><%= article.keywords %></td>
-      <td><%= article.lang %></td>
-      <td><%= article.rel %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Delete', article_path(article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
-<br>
-<%= will_paginate @articles %>
+        <% @articles.each do |article| %>
+          <tr>
+            <td>
+              <%= article.id %>
+            </td>
+            <td>
+              <%= article.title_rus %>
+            </td>
+            <td>
+              <%= article.title %>
+            </td>
+            <td>
+              <%= article.date %>
+            </td>
+            <td>
+              <%= link_to URI(article.src_url).host, article.src_url %>
+            </td>
+            <td>
+              <%= article.country %>
+            </td>
+            <td>
+              <%= article.category %>
+            </td>
+            <td>
+              <%= article.keywords %>
+            </td>
+            <td>
+              <%= article.lang %>
+            </td>
+            <td>
+              <%= article.rel %>
+            </td>
+            <td>
+              <%= link_to 'Show', article_path(article) %>
+            </td>
+            <td>
+              <%= link_to 'Edit', edit_article_path(article) %>
+            </td>
+            <td>
+              <%= link_to 'Delete', article_path(article),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= will_paginate @articles %>
+    </div>
+  </div>
+</div>
