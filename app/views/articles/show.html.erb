@@ -1,58 +1,100 @@
 <div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-2">
+        <strong>Title (russian):</strong>
+    </div>
+    <div class="col-md-10">
+      <%= @article.title_rus %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <strong>Title (english):</strong>
+    </div>
+    <div class="col-md-10">
+      <%= @article.title %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <strong>Date:</strong>
+    </div>
+    <div class="col-md-10">
+      <%= @article.date %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <strong>Link:</strong>
+    </div>
+    <div class="col-md-10">
+      <%= link_to URI(@article.src_url).host, @article.src_url %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <strong>Country:</strong>
+    </div>
+    <div class="col-md-10">
+      <%= @article.country %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <strong>Author:</strong>
+    </div>
+    <div class="col-md-10">
+      <%= @article.author %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <strong>Category:</strong>
+    </div>
+    <div class="col-md-10">
+      <%= @article.category %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <strong>Keywords:</strong>
+    </div>
+    <div class="col-md-10">
+      <%= @article.keywords %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <strong>Relevance:</strong>
+    </div>
+    <div class="col-md-10">
+      <%= @article.rel %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <strong>Text:</strong>
+    </div>
+    <div class="col-md-10">
+      <%= @article.text %>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-12">
-      <p>
-        <strong>Title (russian):</strong>
-        <%= @article.title_rus %>
-      </p>
-
-      <p>
-        <strong>Title (english):</strong>
-        <%= @article.title %>
-      </p>
-
-      <p>
-        <strong>Date:</strong>
-        <%= @article.date %>
-      </p>
-
-      <p>
-        <strong>Link:</strong>
-        <%= link_to URI(@article.src_url).host, @article.src_url %>
-      </p>
-
-      <p>
-        <strong>Country:</strong>
-        <%= @article.country %>
-      </p>
-
-      <p>
-        <strong>Author:</strong>
-        <%= @article.author %>
-      </p>
-
-      <p>
-        <strong>Category:</strong>
-        <%= @article.category %>
-      </p>
-
-      <p>
-        <strong>Keywords:</strong>
-        <%= @article.keywords %>
-      </p>
-
-      <p>
-        <strong>Relevance:</strong>
-        <%= @article.rel %>
-      </p>
-
-      <p>
-        <strong>Text:</strong>
-        <%= @article.text %>
-      </p>
-
       <%= link_to 'Edit', edit_article_path(@article) %> |
       <%= link_to 'Back', articles_path %>
     </div>
   </div>
+
 </div>
