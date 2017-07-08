@@ -1,94 +1,62 @@
 <div class="container-fluid">
 
-  <div class="row">
-    <div class="col-md-2">
-        <strong>Title (russian):</strong>
-    </div>
-    <div class="col-md-10">
-      <%= @article.title_rus %>
-    </div>
-  </div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td><strong>Title (russian):</strong></td>
+          <td><%= @article.title_rus %></td>
+        </tr>
 
-  <div class="row">
-    <div class="col-md-2">
-      <strong>Title (english):</strong>
-    </div>
-    <div class="col-md-10">
-      <%= @article.title %>
-    </div>
-  </div>
+        <tr>
+          <td><strong>Title (english):</strong></td>
+          <td><%= @article.title %></td>
+        </tr>
 
-  <div class="row">
-    <div class="col-md-2">
-      <strong>Date:</strong>
-    </div>
-    <div class="col-md-10">
-      <%= @article.date %>
-    </div>
-  </div>
+        <tr>
+          <td><strong>Date:</strong></td>
+          <td><%= @article.date %></td>
+        </tr>
 
-  <div class="row">
-    <div class="col-md-2">
-      <strong>Link:</strong>
-    </div>
-    <div class="col-md-10">
-      <%= link_to URI(@article.src_url).host, @article.src_url %>
-    </div>
-  </div>
+        <tr>
+          <td><strong>Link:</strong></td>
+          <td><%= link_to URI(@article.src_url).host, @article.src_url %></td>
+        </tr>
 
-  <div class="row">
-    <div class="col-md-2">
-      <strong>Country:</strong>
-    </div>
-    <div class="col-md-10">
-      <%= @article.country %>
-    </div>
-  </div>
+        <tr>
+          <td><strong>Country:</strong></td>
+          <td><%= @article.country %></td>
+        </tr>
 
-  <div class="row">
-    <div class="col-md-2">
-      <strong>Author:</strong>
-    </div>
-    <div class="col-md-10">
-      <%= @article.author %>
-    </div>
-  </div>
+        <tr>
+          <td><strong>Author:</strong></td>
+          <td><%= @article.author %></td>
+        </tr>
 
-  <div class="row">
-    <div class="col-md-2">
-      <strong>Category:</strong>
-    </div>
-    <div class="col-md-10">
-      <%= @article.category %>
-    </div>
-  </div>
+        <tr>
+          <td><strong>Category:</strong></td>
+          <td><%= @article.category %></td>
+        </tr>
 
-  <div class="row">
-    <div class="col-md-2">
-      <strong>Keywords:</strong>
-    </div>
-    <div class="col-md-10">
-      <%= @article.keywords %>
-    </div>
-  </div>
+        <tr>
+          <td><strong>Keywords:</strong></td>
+          <td><%= @article.keywords %></td>
+        </tr>
 
-  <div class="row">
-    <div class="col-md-2">
-      <strong>Relevance:</strong>
-    </div>
-    <div class="col-md-10">
-      <%= @article.rel %>
-    </div>
-  </div>
+        <tr>
+          <td><strong>Relevance:</strong></td>
+          <td><%= @article.rel %></td>
+        </tr>
 
-  <div class="row">
-    <div class="col-md-2">
-      <strong>Text:</strong>
-    </div>
-    <div class="col-md-10">
-      <%= @article.text %>
-    </div>
+        <tr>
+          <td><strong>Text:</strong></td>
+          <td><%= @article.text %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
   <div class="row">
     <div class="col-md-12">
