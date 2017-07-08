@@ -16,79 +16,101 @@
 
   
   <div class="form-group">
-    <%= f.label :"Title_(russian)" %><br>
-    <%= f.text_field :title_rus, style: 'width:100%;', class: 'form-control' %>
+    <%= f.label :"Title_(russian)", class: 'col-md-2 control-label' %>
+    <div class="col-md-10">
+      <%= f.text_field :title_rus, style: 'width:100%;', class: 'form-control' %>
+    </div>
   </div>
  
   <div class="form-group">
-    <%= f.label :"Title_(english)" %><br>
-    <%= f.text_field :title, style: 'width:100%;', class: 'form-control' %>
+    <%= f.label :"Title_(english)", class: 'col-md-2 control-label' %>
+    <div class="col-md-10">
+      <%= f.text_field :title, style: 'width:100%;', class: 'form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :date %><br>
-    <%= f.date_field :date, class: 'form-control' %>
+    <%= f.label :date, class: 'col-md-2 control-label' %>
+    <div class="col-md-10">
+      <%= f.date_field :date, class: 'form-control' %>
+    </div>
   </div>
  
   <div class="form-group">
-    <%= f.label :source_url %><br>
-    <%= f.text_field :src_url, style: 'width:100%;', class: 'form-control' %>
+    <%= f.label :source_url, class: 'col-md-2 control-label' %><br>
+    <div class="col-md-10">
+      <%= f.text_field :src_url, style: 'width:100%;', class: 'form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :country %><br>
-    <%= f.country_select :country, { priority_countries: %w(RU BR IN CN ZA), prompt: ''}, class: 'form-control' %>
+    <%= f.label :country, class: 'col-md-2 control-label' %><br>
+    <div class="col-md-10">
+      <%= f.country_select :country, { priority_countries: %w(RU BR IN CN ZA), prompt: ''}, class: 'form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :author %><br>
-    <%= f.text_field :author, style: 'width:100%;', class: 'form-control' %>
+    <%= f.label :author, class: 'col-md-2 control-label' %><br>
+    <div class="col-md-10">
+      <%= f.text_field :author, style: 'width:100%;', class: 'form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :category %><br>
-    <%= f.select :category, [
-      '',
-      'международные отношения',
-      'экономика',
-      'внутренняя политика',
-      'мир труда',
-      'документы',
-      'другие материалы',
-      'international relations',
-      'investment and finance',
-      'political events',
-      'world of work',
-      'documents',
-      'other materials'
-    ], class: 'form-control' %>
+    <%= f.label :category, class: 'col-md-2 control-label' %><br>
+    <div class="col-md-10">
+      <%= f.select :category, [
+        '',
+        'международные отношения',
+        'экономика',
+        'внутренняя политика',
+        'мир труда',
+        'документы',
+        'другие материалы',
+        'international relations',
+        'investment and finance',
+        'political events',
+        'world of work',
+        'documents',
+        'other materials'
+      ], class: 'form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :keywords %><br>
-    <%= f.text_field :keywords, style: 'width:100%;', class: 'form-control' %>
+    <%= f.label :keywords, class: 'col-md-2 control-label' %><br>
+    <div class="col-md-10">
+      <%= f.text_field :keywords, style: 'width:100%;', class: 'form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :relevance %><br>
-    <%= f.select :rel, [
-      '',
-      '0',
-      '1',
-      '2',
-      '3',
-      '4',
-      '5'
-    ], class: 'form-control' %>
+    <%= f.label :relevance, class: 'col-md-2 control-label' %><br>
+    <div class="col-md-10">
+      <%= f.select :rel, [
+        '',
+        '0',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5'
+      ], class: 'form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :text %><br>
-    <%= f.text_area :text, :rows => 20, style: 'width:100%;', class: 'form-control' %>
+    <%= f.label :text, class: 'col-md-2 control-label' %><br>
+    <div class="col-md-10">
+      <%= f.text_area :text, :rows => 20, style: 'width:100%;', class: 'form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.submit :Submit, class: 'btn btn-primary' %>
+    <div class="col-md-2 col-md-offset-2">
+      <%= f.submit :Submit, class: 'btn btn-primary' %>
+    </div>
   </div>
 
 <% end %>
