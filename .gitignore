@@ -26,3 +26,4 @@ db/sphinx/*
 config/development.sphinx.conf
 config/thinking_sphinx.yml
 app/indices/custom.txt
+app/views/welcome/tmp.txt
