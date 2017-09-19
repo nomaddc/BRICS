@@ -7,24 +7,21 @@
     function drawSeriesChart() {
 
       var data = google.visualization.arrayToDataTable([
-        ['ID', 'Life Expectancy', 'Fertility Rate', 'Region',     'Population'],
-        ['CAN',    80.66,              1.67,      'North America',  33739900],
-        ['DEU',    79.84,              1.36,      'Europe',         81902307],
-        ['DNK',    78.6,               1.84,      'Europe',         5523095],
-        ['EGY',    72.73,              2.78,      'Middle East',    79716203],
-        ['GBR',    80.05,              2,         'Europe',         61801570],
-        ['IRN',    72.49,              1.7,       'Middle East',    73137148],
-        ['IRQ',    68.09,              4.77,      'Middle East',    31090763],
-        ['ISR',    81.55,              2.96,      'Middle East',    7485600],
-        ['RUS',    68.6,               1.54,      'Europe',         141850000],
-        ['USA',    78.09,              2.05,      'North America',  307007000]
+        ['ID', 'Relevance', 'Y', 'Keyword',     'Frequency'],
+        ['KW1',    10,       1, 'keyword one',    70],
+        ['KW2',     9,       1, 'keyword two',    47],
+        ['KW3',    5,       1, 'keyword three',   95],
+        ['KW4',    4,       1, 'keyword four',    63],
+        ['KW5',    8,       1, 'keyword five',    60],
+        ['KW6',    7,       1, 'keyword six',     100],
+        ['KW7',    7,       1, 'keyword seven',   110]
       ]);
 
       var options = {
         title: 'Correlation between life expectancy, fertility rate ' +
                'and population of some world countries (2010)',
-        hAxis: {title: 'Life Expectancy'},
-        vAxis: {title: 'Fertility Rate'},
+        hAxis: {title: 'Relevance'},
+        vAxis: {title: 'Y'},
         bubble: {textStyle: {fontSize: 11}}
       };
 
@@ -37,55 +34,59 @@
 
 <div id="main-container" class="container">
   <div class="row">
-    <div class="col-xs-6"><h1>Welcome to BRICS database!</h1></div>
+    <div class="col-md-6"><h1>Welcome to BRICS database!</h1></div>
   </div>
   <div class="row">
-    <div class="col-xs-6"><h3><%= link_to 'Go to Database', controller: 'articles' %></h3></div>
+    <div class="col-md-6"><h3><%= link_to 'Go to Database', controller: 'articles' %></h3></div>
   </div>
   <div class="row">
-    <div class="col-xs-6"><h4>Total texts in Bulletin<h4></div>
-    <div class="col-xs-6"><h4>Количество текстов, помещённых в Бюллетень<h4></div>
+    <div class="col-md-6"><h4>Total texts in Bulletin<h4></div>
+    <div class="col-md-6"><h4>Количество текстов, помещённых в Бюллетень<h4></div>
   </div>
   <div class="row">
-    <div class="col-xs-6">Eng</div>
-    <div class="col-xs-6">Rus</div>
+    <div class="col-md-6">Eng</div>
+    <div class="col-md-6">Rus</div>
   </div>
   <div class="row">
-    <div class="col-xs-6"><%= line_chart @articles.where(:lang => 'eng').group_by_month(:date, last: 6).count.map { |x,y| { x => (@sume += y)}}.reduce({}, :merge), curve: false %></div>
-    <div class="col-xs-6"><%= line_chart @articles.where(:lang => 'rus').group_by_month(:date, last: 6).count.map { |x,y| { x => (@sumr += y)}}.reduce({}, :merge) %></div>
+    <div class="col-md-6"><%= line_chart @articles.where(:lang => 'eng').group_by_month(:date, last: 6).count.map { |x,y| { x => (@sume += y)}}.reduce({}, :merge), curve: false %></div>
+    <div class="col-md-6"><%= line_chart @articles.where(:lang => 'rus').group_by_month(:date, last: 6).count.map { |x,y| { x => (@sumr += y)}}.reduce({}, :merge) %></div>
   </div>
   <div class="row">
-    <div class="col-xs-6"><%= column_chart @articles.where(:lang => 'eng').group(:category).group_by_month(:date, last: 6).count, stacked: true, legend: "bottom" %></div>
-    <div class="col-xs-6"><%= column_chart @articles.where(:lang => 'rus').group(:category).group_by_month(:date, last: 6).count, stacked: true, legend: "bottom" %></div>
+    <div class="col-md-12">Eng</div>
+    <div class="col-md-12"><%= column_chart @articles.where(:lang => 'eng').group(:category).group_by_month(:date, last: 6).count, stacked: true %></div>
   </div>
   <div class="row">
-    <div class="col-xs-6"><h4>Total Bulletin entries by category</h4></div>
-    <div class="col-xs-6"><h4>Количество текстов по тематическим разделам Бюллетеня</h4></div>
+    <div class="col-md-12">Rus</div>
+    <div class="col-md-12"><%= column_chart @articles.where(:lang => 'rus').group(:category).group_by_month(:date, last: 6).count, stacked: true %></div>
   </div>
   <div class="row">
-    <div class="col-xs-6">Eng</div>
-    <div class="col-xs-6">Rus</div>
+    <div class="col-md-6"><h4>Total Bulletin entries by category</h4></div>
+    <div class="col-md-6"><h4>Количество текстов по тематическим разделам Бюллетеня</h4></div>
   </div>
   <div class="row">
-    <div class="col-xs-6"><%= pie_chart @articles.where(:lang => 'eng').group(:category).count %></div>
-    <div class="col-xs-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count %></div>
+    <div class="col-md-6">Eng</div>
+    <div class="col-md-6">Rus</div>
   </div>
   <div class="row">
-    <div class="col-xs-6"><h4>Keyword frequency diagrams<h4></div>
-    <div class="col-xs-6"><h4>Частотные диаграммы встречаемости ключевых слов<h4></div>
+    <div class="col-md-6"><%= pie_chart @articles.where(:lang => 'eng').group(:category).count %></div>
+    <div class="col-md-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count %></div>
   </div>
   <div class="row">
-    <div class="col-xs-6">Eng</div>
-    <div class="col-xs-6">Rus</div>
+    <div class="col-md-6"><h4>Keyword frequency diagrams<h4></div>
+    <div class="col-md-6"><h4>Частотные диаграммы встречаемости ключевых слов<h4></div>
   </div>
   <div class="row">
-    <div class="col-xs-6">disabled</div>
-    <div class="col-xs-6">disabled</div>
+    <div class="col-md-6">Eng</div>
+    <div class="col-md-6">Rus</div>
   </div>
   <div class="row">
-    <div class="col-xs-12"><h4>Карты многомерного шкалирования совместной встречаемости ключевых слов по всему информационному массиву?????<h4></div>
+    <div class="col-md-6">disabled</div>
+    <div class="col-md-6">disabled</div>
   </div>
   <div class="row">
-    <div class="col-xs-12"><div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+    <div class="col-md-12"><h4>Карты многомерного шкалирования совместной встречаемости ключевых слов по всему информационному массиву?????<h4></div>
+  </div>
+  <div class="row">
+    <div class="col-md-12"><div id="series_chart_div" style="width: 900px; height: 500px;"></div>
   </div>
 </div>
