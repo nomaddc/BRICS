@@ -1,5 +1,6 @@
 ﻿<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
 <%= javascript_tag do %>
      google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawSeriesChart);
@@ -18,8 +19,8 @@
       ]);
 
       var options = {
-        title: 'Correlation between life expectancy, fertility rate ' +
-               'and population of some world countries (2010)',
+        title: 'Карты многомерного шкалирования совместной встречаемости' +
+               'ключевых слов по всему информационному массиву?????',
         hAxis: {title: 'Relevance'},
         vAxis: {title: 'Y'},
         bubble: {textStyle: {fontSize: 11}}
@@ -30,63 +31,70 @@
     }
 <% end %>
 
-
-
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-xl-6"><h1>Welcome to BRICS database!</h1></div>
+    <div class="col-6"><h1>Welcome to BRICS database!</h1></div>
   </div>
   <div class="row">
-    <div class="col-xl-6"><h3><%= link_to 'Go to Database', controller: 'articles' %></h3></div>
+    <div class="col-6"><h3><%= link_to 'Go to Database', controller: 'articles' %></h3></div>
   </div>
   <div class="row">
-    <div class="col-xl-6"><h4>Total texts in Bulletin<h4></div>
-    <div class="col-xl-6"><h4>Количество текстов, помещённых в Бюллетень<h4></div>
+    <div class="col-6">
+      <%= form_tag articles_path, :enforce_utf8 => false, :method => 'post', :class => 'form-inline'  do %>
+        <div class="form-group">
+          <%= text_field_tag :search, params[:search], class: 'form-control input-sm' %>
+        </div>
+        <div class="form-group">
+          <%= link_to "Search", articles_path(:search => :param), class: 'btn btn-primary btn-sm' %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <div class="row">
-    <div class="col-xl-6">Eng</div>
-    <div class="col-xl-6">Rus</div>
+    <div class="col-6"><h4>Total texts in Bulletin<h4></div>
+    <div class="col-6"><h4>Количество текстов, помещённых в Бюллетень<h4></div>
   </div>
   <div class="row">
-    <div class="col-xl-6"><%= line_chart @articles.where(:lang => 'eng').group_by_month(:date, last: 6).count.map { |x,y| { x => (@sume += y)}}.reduce({}, :merge), curve: false %></div>
-    <div class="col-xl-6"><%= line_chart @articles.where(:lang => 'rus').group_by_month(:date, last: 6).count.map { |x,y| { x => (@sumr += y)}}.reduce({}, :merge) %></div>
+    <div class="col-6"><h5>Eng<h5></div>
+    <div class="col-6"><h5>Rus<h5></div>
   </div>
   <div class="row">
-    <div class="col-xl-12">Eng</div>
-    <div class="col-xl-12"><%= column_chart @articles.where(:lang => 'eng').group(:category).group_by_month(:date, last: 6).count, stacked: true %></div>
+    <div class="col-6"><%= line_chart @articles.where(:lang => 'eng').group_by_month(:date, last: 6).count.map { |x,y| { x => (@sume += y)}}.reduce({}, :merge), curve: false %></div>
+    <div class="col-6"><%= line_chart @articles.where(:lang => 'rus').group_by_month(:date, last: 6).count.map { |x,y| { x => (@sumr += y)}}.reduce({}, :merge) %></div>
   </div>
   <div class="row">
-    <div class="col-xl-12">Rus Распределение текстов по тематическим разделам (месячный разрез)</div>
-    <div class="col-xl-12"><%= column_chart @articles.where(:lang => 'rus').group(:category).group_by_month(:date, last: 6).count, stacked: true %></div>
+    <div class="col-12"><h5>Eng<h5></div>
+    <div class="col-12"><%= column_chart @articles.where(:lang => 'eng').group(:category).group_by_month(:date, last: 6).count, stacked: true %></div>
   </div>
   <div class="row">
-    <div class="col-xl-6"><h4>Total Bulletin entries by category (total)</h4></div>
-    <div class="col-xl-6"><h4>Количество текстов по тематическим разделам Бюллетеня (всего)</h4></div>
+    <div class="col-12"><h4>Rus Распределение текстов по тематическим разделам (месячный разрез)<h4></div>
+    <div class="col-12"><%= column_chart @articles.where(:lang => 'rus').group(:category).group_by_month(:date, last: 6).count, stacked: true %></div>
   </div>
   <div class="row">
-    <div class="col-xl-6">Eng</div>
-    <div class="col-xl-6">Rus</div>
+    <div class="col-6"><h4>Total Bulletin entries by category (total)</h4></div>
+    <div class="col-6"><h4>Количество текстов по тематическим разделам Бюллетеня (всего)</h4></div>
   </div>
   <div class="row">
-    <div class="col-xl-6"><%= pie_chart @articles.where(:lang => 'eng').group(:category).count %></div>
-    <div class="col-xl-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count %></div>
+    <div class="col-6"><h5>Eng<h5></div>
+    <div class="col-6"><h5>Rus<h5></div>
   </div>
   <div class="row">
-    <div class="col-xl-6"><h4>Keyword frequency diagrams<h4></div>
-    <div class="col-xl-6"><h4>Частотные диаграммы встречаемости ключевых слов<h4></div>
+    <div class="col-6"><%= pie_chart @articles.where(:lang => 'eng').group(:category).count %></div>
+    <div class="col-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count %></div>
   </div>
   <div class="row">
-    <div class="col-xl-6">Eng</div>
-    <div class="col-xl-6">Rus</div>
+    <div class="col-6"><h4>Keyword frequency diagrams<h4></div>
+    <div class="col-6"><h4>Частотные диаграммы встречаемости ключевых слов<h4></div>
   </div>
   <div class="row">
-    <div class="col-xl-6">disabled</div>
-    <div class="col-xl-6">disabled</div>
+    <div class="col-6"><h5>Eng<h5></div>
+    <div class="col-6"><h5>Rus<h5></div>
   </div>
   <div class="row">
-    <div class="col-xl-12"><h4>Карты многомерного шкалирования совместной встречаемости ключевых слов по всему информационному массиву?????<h4></div>
+    <div class="col-6">disabled</div>
+    <div class="col-6">disabled</div>
   </div>
   <div class="row">
-    <div class="col-xl-12"><div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+    <div class="col-12"><div id="series_chart_div" style="width: 900px; height: 500px;"></div>
   </div>
 </div>
