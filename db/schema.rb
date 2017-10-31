@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518111748) do
+ActiveRecord::Schema.define(version: 20171031150444) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170518111748) do
     t.boolean  "is_active",                                    default: true, null: false
     t.string   "lang"
     t.decimal  "rel",                           precision: 10
+    t.string   "keywords2"
   end
 
 end
