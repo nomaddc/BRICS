@@ -80,12 +80,18 @@
 
   <div class="form-group">
     <%= f.label :keywords, class: 'col-md-1 control-label' %>
-    <div class="col-md-11">
-      <%= f.text_field :keywords, style: 'width:100%;', class: 'form-control' %>
+    <div class="col-md-3">
+      <%= f.select :keywords, ['', 'unclear', 'concluded_agreements', 'expert_opinion', 'fas', 'foreign_ministers_meeting', 'healthcare', 'high_level_meeting', 'imf', 'mofa', 'movie', 'ndb', 'obor', 'off_docs', 'rating', 'research', 'sergey_lavrov ', 'speech ', 'terrorism', 'top_level_meeting ', 'trade_relations', 'un', 'vladimir_putin',
+ 'wang_yi ', 'wto', 'xi_jinping ', 'xiamen_summit', 'bio', 'quotation'], {}, { :class => 'form-control' } %>
     </div>
   </div>
 
-
+  <div class="form-group">
+    <%= f.label :keywords2, class: 'col-md-1 control-label' %>
+    <div class="col-md-11">
+      <%= f.text_field :keywords2, style: 'width:100%;', class: 'form-control' %>
+    </div>
+  </div>
 
   <div class="form-group">
     <%= f.label :relevance, class: 'col-md-1 control-label' %>
