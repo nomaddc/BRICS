@@ -40,12 +40,12 @@
   </div>
   <div class="row">
     <div class="col-6">
-      <%= form_tag articles_path, :enforce_utf8 => false, :method => 'post', :class => 'form-inline'  do %>
+      <%= form_tag articles_path, :enforce_utf8 => false, :method => 'get', :class => 'form-inline'  do %>
         <div class="form-group">
           <%= text_field_tag :search, params[:search], class: 'form-control input-sm' %>
         </div>
         <div class="form-group">
-          <%= link_to "Search", articles_path(:search => :param), class: 'btn btn-primary btn-sm' %>
+          <%= submit_tag "Search", :name => nil, class: 'btn btn-primary btn-sm' %>
         </div>
       <% end %>
     </div>
