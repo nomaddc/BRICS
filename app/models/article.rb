@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
-  before_validation do |model| 
-    model.keywords.reject!(&:blank?) if model.keywords 
+  def keywords=(value)
+    return super value.reject!(&:blank?).join(", ") if value.is_a?(Array)
+
+    super
   end
 
   self.per_page = 9
