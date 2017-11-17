@@ -1,4 +1,8 @@
 class Article < ApplicationRecord
+  before_validation do |model| 
+    model.keywords.reject!(&:blank?) if model.keywords 
+  end
+
   self.per_page = 9
   include Filterable
   validates :title_rus, presence: true, length: { minimum: 5 }
