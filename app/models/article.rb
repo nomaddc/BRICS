@@ -12,7 +12,6 @@ class Article < ApplicationRecord
   validates :category, presence: true
   validates :src_url, presence: true
   validates :keywords, presence: true
-  validates :keywords2, presence: true
   validates :text, presence: true, length: { minimum: 5 }
   validates :date, presence: true
 
@@ -22,6 +21,7 @@ class Article < ApplicationRecord
   scope :date, -> (date) { where date: date }
   scope :lang, -> (lang) { where lang: lang }
   scope :keywords, -> (keywords) { where('keywords like ?', "%#{keywords}%")}
+  scope :keywords2, -> (keywords2) { where('keywords2 like ?', "%#{keywords2}%")}
   scope :title_rus, -> (title_rus) { where('title_rus like ?', "%#{title_rus}%")}
   scope :title, -> (title) { where('title LIKE ?', "%#{title}%")}
   scope :rel, -> (rel) { where rel: rel }
