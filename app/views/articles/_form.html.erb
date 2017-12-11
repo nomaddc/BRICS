@@ -1,4 +1,6 @@
-﻿<%= form_for @article, html: { class: "form-horizontal" } do |f| %>
+﻿<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+<%= form_for @article, html: { class: "form-horizontal" } do |f| %>
  
   <% if @article.errors.any? %>
     <div id="error_explanation" class="alert alert-warning" role="alert">
@@ -122,7 +124,22 @@
 	'wto',
 	'xi_jinping',
 	'xiamen_summit'
-	]), {}, {:class => 'form-control', :multiple => true, :size => 10} %>
+	]), {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :keywords, class: 'col-md-1 control-label' %>
+    <div class="col-md-3">
+	<input type="text" data-role="tagsinput" class="form-control" />
+	<%= javascript_tag do %>
+	$('input').tagsinput({
+	  typeahead: {
+		source: ['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo']
+	  }
+	});
+	freeInput: false
+	<% end %>
     </div>
   </div>
 
