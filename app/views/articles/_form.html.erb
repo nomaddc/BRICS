@@ -88,7 +88,7 @@
       Сама функция находится в assets/javascript/application.js:28
       -->
     	<%= javascript_tag do %>
-        TagsInput('#keywords', "#{new_article_url}")
+        TagsInput('#keywords', "<%= new_article_url %>.json")
     	<% end %>
     </div>
   </div>
