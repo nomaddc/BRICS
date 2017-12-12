@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
     respond_to do |format|
       format.html
-      format.json { render json: @citynames.to_json }
+      format.json { render json: @keywords.to_json }
     end
   end
 
