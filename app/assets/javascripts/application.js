@@ -1,4 +1,4 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
+﻿// This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
@@ -26,26 +26,27 @@ $(document).on('turbolinks:load', function() {
 
 
 function TagsInput(anchor, collection) {
-  var citynames = new Bloodhound({
+  var keywords = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     prefetch: {
       // collection это полный путь к твоему JSON.
       url: collection,
       filter: function(list) {
-        return $.map(list, function(cityname) {
-          return { name: cityname }; });
+        return $.map(list, function(keyword) {
+          return { name: keyword }; });
       }
     }
   });
-  citynames.initialize();
+  keywords.initialize();
   // anchor - идентификатор твоего поля инпут (ex: "#keywords")
   $(anchor).tagsinput({
     typeaheadjs: {
-      name: 'citynames',
+      name: 'keywords',
       displayKey: 'name',
       valueKey: 'name',
-      source: citynames.ttAdapter()
-    }
+      source: keywords.ttAdapter()
+    },
+    freeInput: false
   });
 }

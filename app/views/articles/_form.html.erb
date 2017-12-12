@@ -1,4 +1,4 @@
-<%= form_for @article, html: { class: "form-horizontal" } do |f| %>
+﻿<%= form_for @article, html: { class: "form-horizontal" } do |f| %>
 
   <% if @article.errors.any? %>
     <div id="error_explanation" class="alert alert-warning" role="alert">
@@ -75,54 +75,6 @@
         '5 documents',
         '6 other materials'
       ], {}, { :class => 'form-control' } %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :keywords, class: 'col-md-1 control-label' %>
-    <div class="col-md-3">
-      <%= f.select :keywords, options_for_select([
-	'bio',
-	'brics+',
-	'concluded_agreements',
-	'digital',
-	'ecology',
-	'economic_challenges',
-	'emerging_market',
-	'expert_opinion',
-	'fas',
-	'foreign_ministers_meeting',
-	'global_governance',
-	'imf',
-	'innovations',
-	'investments',
-	'media',
-	'mofa',
-	'movie',
-	'national_security',
-	'ndb',
-	'obor',
-	'off_docs',
-	'pharmacy',
-	'quotation',
-	'rating',
-	'research',
-	'sergey_lavrov',
-	'social_issues',
-	'space',
-	'speech',
-	'sustainable_development',
-	'terrorism',
-	'top_level_meeting',
-	'trade_relations',
-	'un',
-	'unclear',
-	'vladimir_putin',
-	'wang_yi',
-	'wto',
-	'xi_jinping',
-	'xiamen_summit'
-	]), {}, {:class => 'form-control'} %>
     </div>
   </div>
 
