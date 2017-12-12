@@ -14,22 +14,42 @@ class ArticlesController < ApplicationController
       priority_index.present? ? priority_index.to_s : country.name
     end
   end
- 
+
   def show
     @article = Article.find(params[:id])
   end
- 
+
   def new
+    @citynames = [ "Amsterdam",
+      "London",
+      "Paris",
+      "Washington",
+      "New York",
+      "Los Angeles",
+      "Sydney",
+      "Melbourne",
+      "Canberra",
+      "Beijing",
+      "New Delhi",
+      "Kathmandu",
+      "Cairo",
+      "Cape Town",
+      "Kinshasa"
+    ]
     @article = Article.new
+    respond_to do |format|
+      format.html
+      format.json { render json: @citynames.to_json }
+    end
   end
- 
+
   def edit
     @article = Article.find(params[:id])
   end
- 
+
   def create
     @article = Article.new(article_params)
- 
+
     @article.lang = @article.title.blank? ? 'rus' : 'eng'
 
     if @article.save
@@ -38,7 +58,7 @@ class ArticlesController < ApplicationController
       render 'new'
     end
   end
- 
+
   def update
     @article = Article.find(params[:id])
 
@@ -50,22 +70,22 @@ class ArticlesController < ApplicationController
       render 'edit'
     end
   end
- 
+
   def destroy
     @article = Article.find(params[:id])
     @article.update(:is_active => false)
- 
+
     redirect_to articles_path
   end
 
   def undelete
     @articles = Article.where(is_active: false).paginate(:per_page => 15, :page => params[:page])
   end
-  
+
   def undestroy
     @article = Article.find(params[:id])
     @article.update(:is_active => true)
- 
+
     redirect_to undelete_articles_path
   end
 

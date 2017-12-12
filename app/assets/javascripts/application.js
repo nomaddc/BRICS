@@ -13,7 +13,39 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
-//= require chartkick
-//= require bootstrap-tagsinput
 //= require typeahead.bundle
+//= require bootstrap-tagsinput.min
+//= require chartkick
+//= require_tree .
+
+
+$(document).on('turbolinks:load', function() {
+  $( document ).ready(function() {
+  })
+});
+
+
+function TagsInput(anchor, collection) {
+  var citynames = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: {
+      // collection это полный путь к твоему JSON.
+      url: collection,
+      filter: function(list) {
+        return $.map(list, function(cityname) {
+          return { name: cityname }; });
+      }
+    }
+  });
+  citynames.initialize();
+  // anchor - идентификатор твоего поля инпут (ex: "#keywords")
+  $(anchor).tagsinput({
+    typeaheadjs: {
+      name: 'citynames',
+      displayKey: 'name',
+      valueKey: 'name',
+      source: citynames.ttAdapter()
+    }
+  });
+}
