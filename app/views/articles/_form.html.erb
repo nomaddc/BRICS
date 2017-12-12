@@ -1,7 +1,5 @@
-﻿<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
 <%= form_for @article, html: { class: "form-horizontal" } do |f| %>
- 
+
   <% if @article.errors.any? %>
     <div id="error_explanation" class="alert alert-warning" role="alert">
       <h2>
@@ -16,14 +14,14 @@
     </div>
   <% end %>
 
-  
+
   <div class="form-group">
     <%= f.label :"Title_(russian)", class: 'col-md-1 control-label' %>
     <div class="col-md-11">
       <%= f.text_field :title_rus, style: 'width:100%;', class: 'form-control' %>
     </div>
   </div>
- 
+
   <div class="form-group">
     <%= f.label :"Title_(english)", class: 'col-md-1 control-label' %>
     <div class="col-md-11">
@@ -37,7 +35,7 @@
       <%= f.date_field :date, class: 'form-control' %>
     </div>
   </div>
- 
+
   <div class="form-group">
     <%= f.label :source_url, class: 'col-md-1 control-label' %>
     <div class="col-md-11">
@@ -131,15 +129,15 @@
   <div class="form-group">
     <%= f.label :keywords, class: 'col-md-1 control-label' %>
     <div class="col-md-3">
-	<input type="text" data-role="tagsinput" class="form-control" />
-	<%= javascript_tag do %>
-	$('input').tagsinput({
-	  typeahead: {
-		source: ['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo']
-	  }
-	});
-	freeInput: false
-	<% end %>
+      <%= f.text_field :keywords, id: "keywords", data: { role: 'tagsinput' } %>
+      <!-- Нужно передать функции идентификатор поля('#keywords')
+      и путь к json коллекции.
+      смотри пример в контроллере 'articles#new'
+      Сама функция находится в assets/javascript/application.js:28
+      -->
+    	<%= javascript_tag do %>
+        TagsInput('#keywords', "#{new_article_url}")
+    	<% end %>
     </div>
   </div>
 
