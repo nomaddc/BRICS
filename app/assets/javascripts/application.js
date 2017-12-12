@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', function() {
 
 
 function TagsInput(anchor, collection) {
-  var keywords = new Bloodhound({
+  var keywordslst = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     prefetch: {
@@ -38,14 +38,14 @@ function TagsInput(anchor, collection) {
       }
     }
   });
-  keywords.initialize();
+  keywordslst.initialize();
   // anchor - идентификатор твоего поля инпут (ex: "#keywords")
   $(anchor).tagsinput({
     typeaheadjs: {
-      name: 'keywords',
+      name: 'keywordslst',
       displayKey: 'name',
       valueKey: 'name',
-      source: keywords.ttAdapter()
+      source: keywordslst.ttAdapter()
     },
     freeInput: false
   });

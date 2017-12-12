@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @keywords = [ 'bio',
+    @keywordslst = [ 'bio',
 	'brics+',
 	'concluded_agreements',
 	'digital',
@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
     respond_to do |format|
       format.html
-      format.json { render json: @keywords.to_json }
+      format.json { render json: @keywordslst.to_json }
     end
   end
 
