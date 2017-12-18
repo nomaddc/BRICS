@@ -79,8 +79,8 @@
     <div class="col-6"><h5>Rus<h5></div>
   </div>
   <div class="row">
-    <div class="col-6"><%= pie_chart @articles.where(:lang => 'eng').group(:category).count, colors: ["green", "red", "blue", "orange", "yellow", "grey"], legend: "right" %></div>
-    <div class="col-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count, colors: ["orange", "green", "grey", "red", "yellow", "blue"], legend: "right" %></div>
+    <div class="col-6"><%= pie_chart @articles.where(:lang => 'eng').group(:category).count, legend: "right" %></div>
+    <div class="col-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count, legend: "right" %></div>
   </div>
   <div class="row">
     <div class="col-6"><h4>Keyword frequency diagrams<h4></div>

@@ -70,6 +70,47 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    @keywordslst = [ 'bio',
+	'brics+',
+	'concluded_agreements',
+	'digital',
+	'ecology',
+	'economic_challenges',
+	'emerging_market',
+	'expert_opinion',
+	'fas',
+	'foreign_ministers_meeting',
+	'global_governance',
+	'imf',
+	'innovations',
+	'investments',
+	'media',
+	'mofa',
+	'movie',
+	'national_security',
+	'ndb',
+	'obor',
+	'off_docs',
+	'pharmacy',
+	'quotation',
+	'rating',
+	'research',
+	'sergey_lavrov',
+	'social_issues',
+	'space',
+	'speech',
+	'sustainable_development',
+	'terrorism',
+	'top_level_meeting',
+	'trade_relations',
+	'un',
+	'unclear',
+	'vladimir_putin',
+	'wang_yi',
+	'wto',
+	'xi_jinping',
+	'xiamen_summit'
+    ]
   end
 
   def create
