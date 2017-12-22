@@ -64,11 +64,11 @@
   </div>
   <div class="row">
     <div class="col-12"><h5>Eng Texts spread by subject (monthly slice)<h5></div>
-    <div class="col-12"><%= column_chart @articles.where(:lang => 'eng').group(:category).order('category desc').group_by_month(:date, last: 6).count, stacked: true %></div>
+    <div class="col-12"><%= column_chart @articles.where(:lang => 'eng').group(:category).order('category desc').group_by_month(:date, last: 6).count, colors: ["red", "orange", "yellow", "green", "blue", "violet"], stacked: true %></div>
   </div>
   <div class="row">
     <div class="col-12"><h4>Rus Распределение текстов по тематическим разделам (месячный разрез)<h4></div>
-    <div class="col-12"><%= column_chart @articles.where(:lang => 'rus').group(:category).order('category desc').group_by_month(:date, last: 6).count, stacked: true %></div>
+    <div class="col-12"><%= column_chart @articles.where(:lang => 'rus').group(:category).order('category desc').group_by_month(:date, last: 6).count, colors: ["red", "orange", "yellow", "green", "blue", "violet"], stacked: true %></div>
   </div>
   <div class="row">
     <div class="col-6"><h4>Total Bulletin entries by category (total)</h4></div>
@@ -79,8 +79,8 @@
     <div class="col-6"><h5>Rus<h5></div>
   </div>
   <div class="row">
-    <div class="col-6"><%= pie_chart @articles.where(:lang => 'eng').group(:category).count, legend: "right" %></div>
-    <div class="col-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count, legend: "right" %></div>
+    <div class="col-6"><%= pie_chart @articles.where(:lang => 'eng').group(:category).count, colors: ["red", "orange", "yellow", "green", "blue", "violet"], legend: "right" %></div>
+    <div class="col-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count, colors: ["red", "orange", "yellow", "green", "blue", "violet"], legend: "right" %></div>
   </div>
   <div class="row">
     <div class="col-6"><h4>Keyword frequency diagrams<h4></div>
