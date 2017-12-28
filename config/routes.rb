@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	  end
 	  collection do
 	    get 'undelete'
+	    get 'embed'
 	  end
 	end
  
