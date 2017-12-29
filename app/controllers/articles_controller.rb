@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   PRIORITY_COUNTRIES = %w[RU BR IN CN ZA]
-  http_basic_authenticate_with name: "edt", password: "pass", except: [:index, :show]
+  http_basic_authenticate_with name: "edt", password: "pass", except: [:index, :show, :embed]
 
   def index
     if params[:search] == nil
