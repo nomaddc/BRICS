@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   PRIORITY_COUNTRIES = %w[RU BR IN CN ZA]
+  after_filter :allow_iframe, only: [:embed]
   http_basic_authenticate_with name: "edt", password: "pass", except: [:index, :show, :embed]
 
   def index
@@ -167,5 +168,9 @@ class ArticlesController < ApplicationController
   private
     def article_params
       params.require(:article).permit(:title_rus, :title, :date, :src_url, :country, :author, :category, :keywords2, :text, :lang, :rel, :keywords)
+    end
+
+    def allow_iframe
+      response.headers.delete "X-Frame-Options"
     end
 end
