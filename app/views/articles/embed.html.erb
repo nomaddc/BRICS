@@ -22,7 +22,9 @@
           <th width="3%">ID</th>
           <th width="40%">Title (russian)</th>
           <th width="40%">Title (english)</th>
+          <th>Author</th>
           <th>Date</th>
+          <th>Link</th>
         </tr>
 
         <% @articles.each do |article| %>
@@ -37,7 +39,13 @@
               <%= link_to article.title, article_path(article) %>
             </td>
             <td>
+              <%= link_to article.author, article_path(article) %>
+            </td>
+            <td>
               <%= article.date %>
+            </td>
+            <td>
+              <%= link_to URI(article.src_url).host, article.src_url %>
             </td>
           </tr>
         <% end %>

@@ -153,7 +153,7 @@ class ArticlesController < ApplicationController
     if params[:search] == nil
       @articles = Article.where(is_active: true).order('id DESC').paginate(:page => params[:page])
     else
-      @articles = Article.search(params[:search], :without => {:is_active => false}, :page => params[:page], :per_page => 9, :order => :id)
+      @articles = Article.search(params[:search], :without => {:is_active => false}, :page => params[:page], :per_page => 9, :order => "id DESC")
     end
   end
 
