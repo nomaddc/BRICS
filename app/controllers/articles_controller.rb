@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:search] == nil
-      @articles = Article.filter(params.slice(:category, :country, :src_url, :date, :lang, :keywords, :keywords2, :title, :title_rus, :rel)).where(is_active: true).order('id DESC').paginate(:page => params[:page])
+      @articles = Article.filter(params.slice(:category, :country, :src_url, :date, :lang, :keywords, :keywords2, :title, :title_rus, :rel)).where(is_active: true).order('id DESC').paginate(:page => params[:page], :per_page => 9)
     else
       @articles = Article.search(params[:search], :without => {:is_active => false}, :page => params[:page], :per_page => 9, :order => :id)
     end
@@ -151,10 +151,11 @@ class ArticlesController < ApplicationController
 
   def embed
     if params[:search] == nil
-      @articles = Article.where(is_active: true).order('id DESC').paginate(:page => params[:page])
+      @articles = Article.where(is_active: true).order('id DESC').paginate(:page => params[:page], :per_page => 15)
     else
-      @articles = Article.search(params[:search], :without => {:is_active => false}, :page => params[:page], :per_page => 9, :order => "id DESC")
+      @articles = Article.search(params[:search], :without => {:is_active => false}, :page => params[:page], :per_page => 15, :order => "id DESC")
     end
+    @res = @articles.count
   end
 
   def undestroy
