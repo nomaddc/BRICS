@@ -150,12 +150,14 @@ class ArticlesController < ApplicationController
   end
 
   def embed
+    @rese, @resr = 0
     if params[:search] == nil
       @articles = Article.where(is_active: true).order('id DESC').paginate(:page => params[:page], :per_page => 15)
     else
       @articles = Article.search(params[:search], :without => {:is_active => false}, :page => params[:page], :per_page => 15, :order => "id DESC")
+      @rese = Article.search(params[:search], :without => {:is_active => false, :lang => 'rus'}).count
+      @resr = Article.search(params[:search], :without => {:is_active => false, :lang => 'eng'}).count
     end
-    @res = @articles.count
   end
 
   def undestroy

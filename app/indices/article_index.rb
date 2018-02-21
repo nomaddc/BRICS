@@ -8,10 +8,9 @@
     indexes title_rus
     indexes category, :sortable => true
     indexes text
-    indexes lang
     indexes date
     indexes src_url
     indexes author
 
-    has created_at, updated_at, is_active
+    has created_at, updated_at, is_active, lang
 end
