@@ -155,8 +155,7 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.search(params[:search], :without => {:is_active => false}, :page => params[:page], :per_page => 15, :order => "id DESC")
     end
-    @rese = @articles.where(:lang => 'eng').count
-    @resr = @articles.where(:lang => 'rus').count
+    @res = @articles.count
   end
 
   def undestroy
