@@ -83,18 +83,6 @@
     <div class="col-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count, colors: ["red", "orange", "yellow", "green", "blue", "violet"], legend: "right" %></div>
   </div>
   <div class="row">
-    <div class="col-6"><h4>Keyword frequency diagrams<h4></div>
-    <div class="col-6"><h4>Частотные диаграммы встречаемости ключевых слов<h4></div>
-  </div>
-  <div class="row">
-    <div class="col-6"><h5>Eng<h5></div>
-    <div class="col-6"><h5>Rus<h5></div>
-  </div>
-  <div class="row">
-    <div class="col-6">disabled</div>
-    <div class="col-6">disabled</div>
-  </div>
-  <div class="row">
     <div class="col-6"><div id="series_chart_div" style="width: 900px; height: 500px;"></div>
   </div>
   <div class="col-6">
