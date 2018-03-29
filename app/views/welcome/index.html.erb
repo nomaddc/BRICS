@@ -95,6 +95,17 @@
     <div class="col-6">disabled</div>
   </div>
   <div class="row">
-    <div class="col-12"><div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+    <div class="col-6"><div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+  </div>
+  <div class="col-6">
+	<%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
+		<%= select_tag :kw1, options_for_select(@keywords, params[:kw1]), :prompt => "Please select" %>
+		<%= select_tag :kw2, options_for_select(@keywords, params[:kw2]), :prompt => "Please select" %>
+		<%= select_tag :kw3, options_for_select(@keywords, params[:kw3]), :prompt => "Please select" %>
+		<%= select_tag :range, options_for_select(@period, params[:range]), :prompt => "Please select" %>
+		<%= text_field_tag :search, params[:search], class: 'form-control input-sm' %>
+		<%= submit_tag :count %>
+	<% end %>
+	<%= @testing.total_entries %>
   </div>
 </div>

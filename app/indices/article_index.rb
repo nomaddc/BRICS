@@ -2,7 +2,7 @@
   :article, :name => 'ind', :with => :active_record
   ) do
     # fields
-    indexes title
+    indexes title, :sortable => true
     indexes country, :sortable => true
     indexes keywords
     indexes title_rus
