@@ -2,15 +2,15 @@ class WelcomeController < ApplicationController
   
   def index
 
-    @articles = Article 
+    @articles = Article
     @sume = 0
     @sumr = 0
     param = params[:search]
 
-    @keywords = [
-	'opt1',
-	'opt2',
-	'opt3'
+    @keywordssel = [
+	' AND ',
+	' !',
+	' MAYBE '
     ]
 
     @period = [
@@ -19,10 +19,71 @@ class WelcomeController < ApplicationController
 	'last year'
     ]
 
+    @keywordslst = [ 'bio',
+	'brics+',
+	'concluded_agreements',
+	'digital',
+	'ecology',
+	'economic_challenges',
+	'emerging_market',
+	'expert_opinion',
+	'fas',
+	'foreign_ministers_meeting',
+	'global_governance',
+	'imf',
+	'innovations',
+	'investments',
+	'media',
+	'mofa',
+	'movie',
+	'national_security',
+	'ndb',
+	'obor',
+	'off_docs',
+	'pharmacy',
+	'quotation',
+	'rating',
+	'research',
+	'sergey_lavrov',
+	'social_issues',
+	'space',
+	'speech',
+	'sustainable_development',
+	'terrorism',
+	'top_level_meeting',
+	'trade_relations',
+	'un',
+	'unclear',
+	'vladimir_putin',
+	'wang_yi',
+	'wto',
+	'xi_jinping',
+	'xiamen_summit'
+    ]
+
     if params[:search] != nil
-      @testing = Article.search params[:search], :without => {:is_active => false}, :ranker => :bm25, :per_page => 1
+      @testing = Article.search params[:search], :without => {:is_active => false}, :ranker => :bm25, :per_page => 2
     else
       @testing = Article.search "d123reisahdsafg"
     end
+	
+	@testingref = []
+	
+	if params[:search2] then
+		@keywordslst.each do |i|
+			cnt = Article.search(i+' AND '+params[:search2], :without => {:is_active => false}, :per_page => 9999).count
+			@testingref.push([i, cnt])
+		end
+	end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @keywordslst.to_json }
+    end
   end
+
+  private
+    def allow_iframe
+      response.headers.delete "X-Frame-Options"
+    end
 end
