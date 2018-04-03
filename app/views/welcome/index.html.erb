@@ -98,13 +98,8 @@
 	
 	<%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
 	<%= text_field_tag :search2, params[:search2], id: "keywords", data: { role: 'tagsinput' } %>
-      <!-- Нужно передать функции идентификатор поля('#keywords')
-      и путь к json коллекции.
-      смотри пример в контроллере 'articles#new'
-      Сама функция находится в assets/javascript/application.js:28
-      -->
     	<%= javascript_tag do %>
-        TagsInput('#keywords', <%= root_url %>.json)
+        TagsInput('#keywords', "<%= root_url %>keywords.json")
     	<% end %>
 	<%= submit_tag :submit %>
 	<% end %>
