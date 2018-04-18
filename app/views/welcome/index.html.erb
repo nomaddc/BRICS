@@ -7,16 +7,7 @@
 
     function drawSeriesChart() {
 
-      var data = google.visualization.arrayToDataTable([
-        ['ID', 'Relevance', 'Y', 'Keyword',     'Frequency'],
-        ['KW1',    10,       1, 'keyword one',    70],
-        ['KW2',     9,       1, 'keyword two',    47],
-        ['KW3',    5,       1, 'keyword three',   95],
-        ['KW4',    4,       1, 'keyword four',    63],
-        ['KW5',    8,       1, 'keyword five',    60],
-        ['KW6',    7,       1, 'keyword six',     100],
-        ['KW7',    7,       1, 'keyword seven',   110]
-      ]);
+      var data = google.visualization.arrayToDataTable($('.temp_information').data('temp'));
 
       var options = {
         title: 'Карты многомерного шкалирования совместной встречаемости' +
@@ -97,13 +88,21 @@
 	<%= @testing.total_entries %><br />
 	
 	<%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
-	<%= text_field_tag :search2, params[:search2], id: "keywords", data: { role: 'tagsinput' } %>
+	<%= text_field_tag :search2, params[:search2], id: "keywords", data: { role: 'tagsinput'} %>
     	<%= javascript_tag do %>
         TagsInput('#keywords', "<%= root_url %>keywords.json")
     	<% end %>
 	<%= submit_tag :submit %>
 	<% end %>
 	<%= @keywordslst %>
+
+        <%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
+	<%= text_field_tag :search3, params[:search3] %>
+	<%= submit_tag :submit %>
+	<% end %>
+
+        <%= content_tag :div, class: "temp_information", data: {temp: @graph} do %>
+        <% end %>
 	
 	<div class="col-xs-6"><%= bar_chart @testingref, height: '1000px' %></div>
   </div>

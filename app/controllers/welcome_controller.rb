@@ -67,14 +67,30 @@ class WelcomeController < ApplicationController
       @testing = Article.search "d123reisahdsafg"
     end
 	
-	@testingref = []
-	
-	if params[:search2] then
-		@keywordslst.each do |i|
-			cnt = Article.search(i+' AND '+params[:search2], :without => {:is_active => false}, :per_page => 9999).count
-			@testingref.push([i, cnt])
-		end
-	end
+    @testingref = []
+    @graph = [['ID', 'Distance', 'Y', 'Name', 'Frequency']]
+
+    
+
+    if params[:search2] then
+      @keywordslst.each do |i|
+        cnt = Article.search(i+' AND '+params[:search2], :without => {:is_active => false}, :per_page => 9999).count
+        @testingref.push([i, cnt])
+      end
+    end
+
+    if params[:search3] then
+      freq1 = Article.search(params[:search3], :without => {:is_active => false}, :per_page => 9999).count
+      @graph.push([params[:search3], 1, 1, params[:search3], freq1])
+      @keywordslst.each do |c|
+        if (c != params[:search3]) then
+        freq1 = Article.search(c, :without => {:is_active => false}, :per_page => 9999).count
+        freq2 = Article.search(c+' AND '+params[:search3], :without => {:is_active => false}, :per_page => 9999).count
+        freq2 = freq1.to_f/freq2.to_f
+        if (freq2 < 1.2) then @graph.push([c, freq2, 1, c, freq1]) end
+        end
+      end
+    end
 
     respond_to do |format|
       format.html
