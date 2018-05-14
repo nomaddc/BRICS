@@ -86,8 +86,8 @@ class WelcomeController < ApplicationController
         if (c != params[:search3]) then
         freq1 = Article.search(c, :without => {:is_active => false}, :per_page => 9999).count
         freq2 = Article.search(c+' AND '+params[:search3], :without => {:is_active => false}, :per_page => 9999).count
-        freq2 = freq1.to_f/freq2.to_f
-        if (freq2 < 1.2) then @graph.push([c, freq2, 1, c, freq1]) end
+        freq2 = Math::log(freq1.to_f/freq2.to_f)
+        @graph.push([c, freq2, 1, c, freq1])
         end
       end
     end
