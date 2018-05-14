@@ -83,7 +83,7 @@ class WelcomeController < ApplicationController
       cnt = 1
       medi = 0
       freq1 = Article.search(params[:search3], :without => {:is_active => false}, :per_page => 9999).count
-      @graph.push('', 0, 1, params[:search3], freq1])
+      @graph.push(['', 0, 1, params[:search3], freq1])
       @keywordslst.each do |c|
         if (c != params[:search3]) then
         freq1 = Article.search(c, :without => {:is_active => false}, :per_page => 9999).count
