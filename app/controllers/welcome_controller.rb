@@ -7,18 +7,6 @@ class WelcomeController < ApplicationController
     @sumr = 0
     param = params[:search]
 
-    @keywordssel = [
-	' AND ',
-	' !',
-	' MAYBE '
-    ]
-
-    @period = [
-	'last week',
-	'last month',
-	'last year'
-    ]
-
     @keywordslst = [ 'bio',
 	'brics+',
 	'concluded_agreements',
@@ -61,37 +49,25 @@ class WelcomeController < ApplicationController
 	'xiamen_summit'
     ]
 
-    if params[:search] != nil
-      @testing = Article.search params[:search], :without => {:is_active => false}, :ranker => :bm25, :per_page => 2
-    else
-      @testing = Article.search "d123reisahdsafg"
-    end
 	
     @testingref = []
     @graph = [['ID', 'Distance', 'Y', 'Name', 'Frequency']]
 
-    
-
-    if params[:search2] then
-      @keywordslst.each do |i|
-        cnt = Article.search(i+' AND '+params[:search2], :without => {:is_active => false}, :per_page => 9999).count
-        @testingref.push([i, cnt])
-      end
-    end
-
-    if params[:search3] then
+    if params[:search] then
       cnt = 1
       medi = 0
-      freq1 = Article.search(params[:search3], :without => {:is_active => false}, :per_page => 9999).count
-      @graph.push(['', 0, 1, params[:search3], freq1])
+      axX = 0
+      axY = 0
+      freq = Article.search(params[:search], :without => {:is_active => false}, :per_page => 9999).count
+      @graph.push(['', 0, 1, params[:search], freq])
+
       @keywordslst.each do |c|
-        if (c != params[:search3]) then
-        freq1 = Article.search(c, :without => {:is_active => false}, :per_page => 9999).count
-        freq2 = Article.search(c+' AND '+params[:search3], :without => {:is_active => false}, :per_page => 9999).count
-        freq3 = (100.0/freq2.to_f)*1.0
-        medi = medi + freq3
-        cnt = cnt + 1
-        if (freq3 <= medi/cnt) then @graph.push(['', freq3, 1, c, freq1]) end
+        if (c != params[:search]) then
+          freq = Article.search(c+' AND '+params[:search], :without => {:is_active => false}, :per_page => 9999).count
+          axX = (100.0/freq.to_f)
+          medi = medi + axX
+          cnt = cnt + 1
+          if (axX < medi/cnt) then @graph.push(['', axX, 1, c, freq]) end
         end
       end
     end

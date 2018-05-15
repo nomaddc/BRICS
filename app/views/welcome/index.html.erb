@@ -74,36 +74,20 @@
     <div class="col-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count, colors: ["red", "orange", "yellow", "green", "blue", "violet"], legend: "right" %></div>
   </div>
   <div class="row">
-    <div class="col-12"><div id="series_chart_div" style="width: 100%; height: 800px;"></div>
-  </div>
-  <div class="col-6">
+    <div class="col-12">
 	<%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
-		<%= select_tag :kw1, options_for_select(@keywordslst, params[:kw1]), :prompt => "Please select" %>
-		<%= select_tag :kw2, options_for_select(@keywordssel, params[:kw2]), :prompt => "Please select" %>
-		<%= select_tag :kw3, options_for_select(@keywordslst, params[:kw3]), :prompt => "Please select" %>
-		<%= select_tag :range, options_for_select(@period, params[:range]), :prompt => "Please select" %>
-		<%= text_field_tag :search, params[:search], class: 'form-control input-sm' %>
-		<%= submit_tag :count %>
-	<% end %>
-	<%= @testing.total_entries %><br />
-	
-	<%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
-	<%= text_field_tag :search2, params[:search2], id: "keywords", data: { role: 'tagsinput'} %>
+	<%= text_field_tag :search, params[:search], id: "keywords", data: { role: 'tagsinput'} %>
     	<%= javascript_tag do %>
         TagsInput('#keywords', "<%= root_url %>keywords.json")
     	<% end %>
 	<%= submit_tag :submit %>
 	<% end %>
-	<%= @keywordslst %>
-
-        <%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
-	<%= text_field_tag :search3, params[:search3] %>
-	<%= submit_tag :submit %>
-	<% end %>
 
         <%= content_tag :div, class: "temp_information", data: {temp: @graph} do %>
         <% end %>
-	
-	<div class="col-xs-6"><%= bar_chart @testingref, height: '1000px' %></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12"><div id="series_chart_div" style="width: 100%; height: 800px;"></div>
   </div>
 </div>
