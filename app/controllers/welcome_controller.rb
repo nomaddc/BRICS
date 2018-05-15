@@ -69,7 +69,7 @@ class WelcomeController < ApplicationController
         end
       end
 
-      @data.sort! {|a,b| a[1] <=> b[1]}
+      @data.sort! {|a,b| b[1] <=> a[1]}
       while @data.count > 10 do
         @data.pop
       end
