@@ -51,25 +51,42 @@ class WelcomeController < ApplicationController
 
 	
     @testingref = []
-    @graph = [['ID', 'Distance', 'Y', 'Name', 'Frequency']]
+    @graph = []
+    @data = []
 
     if params[:search] then
-      cnt = 1
-      medi = 0
       axX = 0
       axY = 0
-      freq = Article.search(params[:search], :without => {:is_active => false}, :per_page => 9999).count
-      @graph.push(['', 0, 1, params[:search], freq])
+      cnt = 0
+      angle = [36, 72, 108, 144, 180, 216, 252, 288, 324, 360]
 
       @keywordslst.each do |c|
         if (c != params[:search]) then
-          freq = Article.search(c+' AND '+params[:search], :without => {:is_active => false}, :per_page => 9999).count
-          axX = (100.0/freq.to_f)
-          medi = medi + axX
-          cnt = cnt + 1
-          if (axX < medi/cnt) then @graph.push(['', axX, 1, c, freq]) end
+          freq = Article.search(c, :without => {:is_active => false}, :per_page => 9999).count
+          dist = Article.search(c+' AND '+params[:search], :without => {:is_active => false}, :per_page => 9999).count
+          dist = 1000/dist.to_f
+          @data.push([c, dist, freq])
         end
       end
+
+      @data.sort! {|a,b| a[1] <=> b[1]}
+      while @data.count > 10 do
+        @data.pop
+      end
+      @data.shuffle!
+
+      @data.each do |c|
+        axY = c[1] * Math.sin(angle[cnt] * Math::PI/180)
+        axX = c[1] * Math.cos(angle[cnt] * Math::PI/180)
+        @graph.push(['', axX, axY, c[0], c[2]])
+        cnt = cnt+1
+      end
+
+      freq = Article.search(params[:search], :without => {:is_active => false}, :per_page => 9999).count
+      @graph.insert(0, ['', 0, 0, params[:search], freq])
+      @graph.insert(0, ['', 'X', 'Y', 'Name', 'Frequency'])
+
+      
     end
 
     respond_to do |format|
