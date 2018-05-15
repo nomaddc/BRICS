@@ -54,16 +54,16 @@ class WelcomeController < ApplicationController
     @graph = []
     @data = []
 
-    if params[:search] then
+    if params[:search2] then
       axX = 0
       axY = 0
       cnt = 0
       angle = [36, 72, 108, 144, 180, 216, 252, 288, 324, 360]
 
       @keywordslst.each do |c|
-        if (c != params[:search]) then
+        if (c != params[:search2]) then
           freq = Article.search(c, :without => {:is_active => false}, :per_page => 9999).count
-          dist = Article.search(c+' AND '+params[:search], :without => {:is_active => false}, :per_page => 9999).count
+          dist = Article.search(c+' AND '+params[:search2], :without => {:is_active => false}, :per_page => 9999).count
           dist = 1000/dist.to_f
           @data.push([c, dist, freq])
         end
@@ -82,8 +82,8 @@ class WelcomeController < ApplicationController
         cnt = cnt+1
       end
 
-      freq = Article.search(params[:search], :without => {:is_active => false}, :per_page => 9999).count
-      @graph.insert(0, ['', 0, 0, params[:search], freq])
+      freq = Article.search(params[:search2], :without => {:is_active => false}, :per_page => 9999).count
+      @graph.insert(0, ['', 0, 0, params[:search2], freq])
       @graph.insert(0, ['', 'X', 'Y', 'Name', 'Frequency'])
 
       

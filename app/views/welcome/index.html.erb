@@ -12,7 +12,7 @@
       var options = {
         title: 'Карты многомерного шкалирования совместной встречаемости' +
                'ключевых слов по всему информационному массиву?????',
-        hAxis: {title: 'Relevance'},
+        hAxis: {title: 'X'},
         vAxis: {title: 'Y'},
         bubble: {textStyle: {fontSize: 11}}
       };
@@ -33,6 +33,7 @@
     <div class="col-6">
       <%= form_tag articles_path, :enforce_utf8 => false, :method => 'get', :class => 'form-inline'  do %>
         <div class="form-group">
+          <h5>Search Database:</h5>
           <%= text_field_tag :search, params[:search], class: 'form-control input-sm' %>
         </div>
         <div class="form-group">
@@ -41,6 +42,27 @@
       <% end %>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-12">
+	<%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
+          <h5>Build a graph:</h5>
+          <%= text_field_tag :search2, params[:search2], id: "keywords", data: { role: 'tagsinput'} %>
+          <%= javascript_tag do %>
+            TagsInput('#keywords', "<%= root_url %>keywords.json")
+    	  <% end %>
+	  <%= submit_tag :Submit, class: 'btn btn-primary btn-sm' %>
+	<% end %>
+	<%= @keywordslst %>
+        <br>
+
+        <%= content_tag :div, class: "temp_information", data: {temp: @graph} do %><% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12"><div id="series_chart_div" style="width: 100%; height: 800px;"></div></div>
+  </div>
+
   <div class="row">
     <div class="col-6"><h4>Total texts in Bulletin<h4></div>
     <div class="col-6"><h4>Количество текстов, помещённых в Бюллетень<h4></div>
@@ -72,24 +94,5 @@
   <div class="row">
     <div class="col-6"><%= pie_chart @articles.where(:lang => 'eng').group(:category).count, colors: ["red", "orange", "yellow", "green", "blue", "violet"], legend: "right" %></div>
     <div class="col-6"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count, colors: ["red", "orange", "yellow", "green", "blue", "violet"], legend: "right" %></div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-	<%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
-	<%= text_field_tag :search, params[:search], id: "keywords", data: { role: 'tagsinput'} %>
-    	<%= javascript_tag do %>
-        TagsInput('#keywords', "<%= root_url %>keywords.json")
-    	<% end %>
-	<%= submit_tag :submit %>
-	<% end %>
-	<%= @keywordslst %>
-        <br>
-
-        <%= content_tag :div, class: "temp_information", data: {temp: @graph} do %>
-        <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12"><div id="series_chart_div" style="width: 100%; height: 800px;"></div>
   </div>
 </div>
