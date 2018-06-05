@@ -50,6 +50,7 @@ class ArticlesController < ApplicationController
 	'social_issues',
 	'space',
 	'speech',
+        'summit',
 	'sustainable_development',
 	'terrorism',
 	'top_level_meeting',
@@ -60,7 +61,13 @@ class ArticlesController < ApplicationController
 	'wang_yi',
 	'wto',
 	'xi_jinping',
-	'xiamen_summit'
+	'xiamen_summit',
+        'political_issues',
+        'narendra_modi',
+        'cyril_ramaphosa',
+        'SA_chairmanship',
+        'Business_Council',
+        'Think_Tank_Council'
     ]
     @article = Article.new
     respond_to do |format|
@@ -100,6 +107,7 @@ class ArticlesController < ApplicationController
 	'social_issues',
 	'space',
 	'speech',
+        'summit',
 	'sustainable_development',
 	'terrorism',
 	'top_level_meeting',
@@ -110,7 +118,13 @@ class ArticlesController < ApplicationController
 	'wang_yi',
 	'wto',
 	'xi_jinping',
-	'xiamen_summit'
+	'xiamen_summit',
+        'political_issues',
+        'narendra_modi',
+        'cyril_ramaphosa',
+        'SA_chairmanship',
+        'Business_Council',
+        'Think_Tank_Council'
     ]
   end
 
