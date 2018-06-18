@@ -58,14 +58,14 @@
       <div class="row">
         <div class="col-12">
 	      <%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
-            <h5>Build a graph:</h5>
+            <h4>Build a graph:</h4>
             <%= text_field_tag :search2, params[:search2], id: "keywords", data: { role: 'tagsinput'} %>
             <%= javascript_tag do %>
               TagsInput('#keywords', "<%= root_url %>keywords.json")
             <% end %>
 	        <%= submit_tag :Submit, class: 'btn btn-primary btn-sm' %>
 	      <% end %>
-	      <%= @keywordslst %>
+	      <h5><%= @keywordslst %></h5>
           <br>
 
           <%= content_tag :div, class: "temp_information", data: {temp: @graph} do %><% end %>
