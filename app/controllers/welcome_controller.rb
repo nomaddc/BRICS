@@ -62,7 +62,7 @@ class WelcomeController < ApplicationController
     @data = []
 
     if !params[:search2] then
-      params[:search2] = 'bio'
+      params[:search2] = 'brics+'
     end
 
     if params[:search2] then
