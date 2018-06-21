@@ -61,6 +61,10 @@ class WelcomeController < ApplicationController
     @graph = []
     @data = []
 
+    if !params[:search2] then
+      params[:search2] = 'bio'
+    end
+
     if params[:search2] then
       axX = 0
       axY = 0

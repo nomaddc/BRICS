@@ -31,15 +31,12 @@
         </div>
       <% end %>
     </div>
-    <div class="col-1 offset-5">
-      <h4><%= link_to 'Русская версия', :index_rus %></h4>
-    </div>
   </div>
 
       <div class="row">
         <div class="col-12">
 	      <%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
-            <h4>Build a graph:</h4>
+            <h4>Build a graph:<%= link_to 'test', :index %></h4>
             <%= text_field_tag :search2, params[:search2], id: "keywords", data: { role: 'tagsinput'} %>
             <%= javascript_tag do %>
               TagsInput('#keywords', "<%= root_url %>keywords.json")

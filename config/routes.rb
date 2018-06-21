@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 	end
  
   	root 'welcome#index'
+	get 'index_rus', to: "welcome#index_rus", as: :index_rus
+	get 'index', to: "welcome#index", as: :index
 end
