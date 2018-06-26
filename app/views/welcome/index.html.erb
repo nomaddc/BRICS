@@ -68,21 +68,5 @@
 	  <%= column_chart @articles.where(:lang => 'eng').group(:category).order('category desc').group_by_month(:date, last: 6).count, colors: ["violet", "blue", "green", "yellow", "orange", "red"], stacked: true %>
       <h4>Total Bulletin entries by category (total)</h4>
 	  <%= pie_chart @articles.where(:lang => 'eng').group(:category).count, colors: ["red", "orange", "yellow", "green", "blue", "violet"], legend: "right" %>
-
-
-      <div class="row">
-        <div class="col-12"><h4>Количество текстов, помещённых в Бюллетень</h4></div>
-      </div>
-      <div class="row">
-        <div class="col-12"><%= line_chart @articles.where(:lang => 'rus').group_by_month(:date, last: 6).count.map { |x,y| { x => (@sumr += y)}}.reduce({}, :merge) %></div>
-      </div>
-      <div class="row">
-        <div class="col-12"><h4>Распределение текстов по тематическим разделам (месячный разрез)</h4></div>
-        <div class="col-12"><%= column_chart @articles.where(:lang => 'rus').group(:category).order('category desc').group_by_month(:date, last: 6).count, colors: ["violet", "blue", "green", "yellow", "orange", "red"], stacked: true %></div>
-      </div>
-      <div class="row">
-        <div class="col-12"><h4>Количество текстов по тематическим разделам Бюллетеня (всего)</h4></div>
-	    <div class="col-12"><%= pie_chart @articles.where(:lang => 'rus').group(:category).count, colors: ["red", "orange", "yellow", "green", "blue", "violet"], legend: "right" %></div>
-      </div>
   
 </div>
