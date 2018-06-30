@@ -46,7 +46,9 @@
                   TagsInput('#keywords', "<%= root_url %>keywords.json")
                 <% end %>
 	        <%= submit_tag :Submit, class: 'btn btn-primary btn-sm' %>
-                <%= select_tag :kwrds, options_for_select(@keywordslst) %>
+                <%= select_tag :kwrds, options_for_select(@keywordslst), { :prompt => "Available options"} %>
+                <%= select_tag :kwrds2, options_for_select(@keywordslst), { :multiple => true, :size => 5 } %>
+                <%= select_tag :kwrds3, options_for_select(@keywordslst), { :multiple => true, :size => 10 } %>
 	      <% end %>
           <br>
 
