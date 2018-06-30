@@ -24,11 +24,11 @@
     <div class="col-6">
       <%= form_tag articles_path, :enforce_utf8 => false, :method => 'get', :class => 'form-inline'  do %>
         <div class="form-group">
-          <h4>Search BRICS database:</h4>
+          <h4>Поиск по базе БРИКС</h4>
           <%= text_field_tag :search, params[:search], class: 'form-control input-sm' %>
         </div>
         <div class="form-group">
-          <%= submit_tag "Search", :name => nil, class: 'btn btn-primary btn-sm' %>
+          <%= submit_tag "Поиск", :name => nil, class: 'btn btn-primary btn-sm' %>
         </div>
       <% end %>
     </div>
@@ -40,12 +40,12 @@
       <div class="row">
         <div class="col-12">
 	      <%= form_tag index_rus_path, :enforce_utf8 => false, :method => 'get' do  %>
-            <h4>Build a graph:</h4>
+            <h4>Постройте диаграмму взаимной встречаемости ключевых слов</h4>
             <%= text_field_tag :search2, params[:search2], id: "keywords", data: { role: 'tagsinput'} %>
             <%= javascript_tag do %>
               TagsInput('#keywords', "<%= root_url %>keywords.json")
             <% end %>
-	        <%= submit_tag :Submit, class: 'btn btn-primary btn-sm' %>
+	        <%= submit_tag "Построить", class: 'btn btn-primary btn-sm' %>
 	      <% end %>
           <br>
 

@@ -51,11 +51,11 @@ class WelcomeController < ApplicationController
         'political_issues',
         'narendra_modi',
         'cyril_ramaphosa',
-        'SA_chairmanship',
-        'Business_Council',
-        'Think_Tank_Council'
+        'sa_chairmanship',
+        'business_council',
+        'think_tank_council'
     ]
-
+    @keywordslst.sort!
 	
     @testingref = []
     @graph = []
@@ -157,11 +157,11 @@ def index_rus
         'political_issues',
         'narendra_modi',
         'cyril_ramaphosa',
-        'SA_chairmanship',
-        'Business_Council',
-        'Think_Tank_Council'
+        'sa_chairmanship',
+        'business_council',
+        'think_tank_council'
     ]
-
+    @keywordslst.sort!
 	
     @testingref = []
     @graph = []
