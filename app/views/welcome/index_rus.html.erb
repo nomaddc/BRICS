@@ -41,10 +41,7 @@
         <div class="col-12">
 	      <%= form_tag index_rus_path, :enforce_utf8 => false, :method => 'get' do  %>
             <h4>Постройте диаграмму взаимной встречаемости ключевых слов</h4>
-            <%= text_field_tag :search2, params[:search2], id: "keywords", data: { role: 'tagsinput'} %>
-            <%= javascript_tag do %>
-              TagsInput('#keywords', "<%= root_url %>keywords.json")
-            <% end %>
+                <%= select_tag :search2, options_for_select(@keywordslst, params[:search2]), { :prompt => "Возможные ключевые слова"} %>
 	        <%= submit_tag "Построить", class: 'btn btn-primary btn-sm' %>
 	      <% end %>
           <br>

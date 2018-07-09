@@ -41,14 +41,8 @@
         <div class="col-12">
 	      <%= form_tag root_path, :enforce_utf8 => false, :method => 'get' do  %>
                 <h4>Build a graph:</h4>
-                <%= text_field_tag :search2, params[:search2], id: "keywords", data: { role: 'tagsinput'} %>
-                <%= javascript_tag do %>
-                  TagsInput('#keywords', "<%= root_url %>keywords.json")
-                <% end %>
+                <%= select_tag :search2, options_for_select(@keywordslst, params[:search2]), { :prompt => "Available options"} %>
 	        <%= submit_tag :Submit, class: 'btn btn-primary btn-sm' %>
-                <%= select_tag :kwrds, options_for_select(@keywordslst), { :prompt => "Available options"} %>
-                <%= select_tag :kwrds2, options_for_select(@keywordslst), { :multiple => true, :size => 5 } %>
-                <%= select_tag :kwrds3, options_for_select(@keywordslst), { :multiple => true, :size => 10 } %>
 	      <% end %>
           <br>
 

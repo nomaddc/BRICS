@@ -1,4 +1,4 @@
-class WelcomeController < ApplicationController
+﻿class WelcomeController < ApplicationController
   
   def index
 
@@ -95,7 +95,7 @@ class WelcomeController < ApplicationController
 
       freq = Article.search(params[:search2], :without => {:is_active => false}, :per_page => 9999).count
       @graph.insert(0, ['', 0, 0, params[:search2], freq])
-      @graph.insert(0, ['', '', '', 'Name', 'Frequency'])
+      @graph.insert(0, ['', '', '', 'Category name', 'Mutual occurrences frequency'])
 
       
     end
@@ -201,7 +201,7 @@ def index_rus
 
       freq = Article.search(params[:search2], :without => {:is_active => false}, :per_page => 9999).count
       @graph.insert(0, ['', 0, 0, params[:search2], freq])
-      @graph.insert(0, ['', '', '', 'Name', 'Frequency'])
+      @graph.insert(0, ['', '', '', 'Название категории', 'Частота совместных упоминаний'])
 
       
     end
