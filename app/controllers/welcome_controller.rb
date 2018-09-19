@@ -53,7 +53,8 @@
         'cyril_ramaphosa',
         'sa_chairmanship',
         'business_council',
-        'think_tank_council'
+        'think_tank_council',
+	'johannesburg_declaration'
     ]
     @keywordslst.sort!
 	
@@ -159,7 +160,8 @@ def index_rus
         'cyril_ramaphosa',
         'sa_chairmanship',
         'business_council',
-        'think_tank_council'
+        'think_tank_council',
+	'johannesburg_declaration'
     ]
     @keywordslst.sort!
 	

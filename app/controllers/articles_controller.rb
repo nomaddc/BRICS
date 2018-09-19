@@ -67,7 +67,8 @@ class ArticlesController < ApplicationController
         'cyril_ramaphosa',
         'SA_chairmanship',
         'Business_Council',
-        'Think_Tank_Council'
+        'Think_Tank_Council',
+	'johannesburg_declaration'
     ]
     @article = Article.new
     respond_to do |format|
@@ -124,7 +125,8 @@ class ArticlesController < ApplicationController
         'cyril_ramaphosa',
         'SA_chairmanship',
         'Business_Council',
-        'Think_Tank_Council'
+        'Think_Tank_Council',
+	'johannesburg_declaration'
     ]
   end
 
