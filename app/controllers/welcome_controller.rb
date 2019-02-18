@@ -51,10 +51,13 @@
         'political_issues',
         'narendra_modi',
         'cyril_ramaphosa',
-        'sa_chairmanship',
         'business_council',
         'think_tank_council',
-	'johannesburg_declaration'
+	'cooperation',
+	'declaration',
+	'partnership',
+	'chairmanship',
+	'jair_bolsonaro'
     ]
     @keywordslst.sort!
 	

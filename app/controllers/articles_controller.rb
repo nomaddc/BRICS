@@ -65,10 +65,13 @@ class ArticlesController < ApplicationController
         'political_issues',
         'narendra_modi',
         'cyril_ramaphosa',
-        'SA_chairmanship',
-        'Business_Council',
-        'Think_Tank_Council',
-	'johannesburg_declaration'
+        'business_council',
+        'think_tank_council',
+	'cooperation',
+	'declaration',
+	'partnership',
+	'chairmanship',
+	'jair_bolsonaro'
     ]
     @article = Article.new
     respond_to do |format|
@@ -123,10 +126,13 @@ class ArticlesController < ApplicationController
         'political_issues',
         'narendra_modi',
         'cyril_ramaphosa',
-        'SA_chairmanship',
-        'Business_Council',
-        'Think_Tank_Council',
-	'johannesburg_declaration'
+        'business_council',
+        'think_tank_council',
+	'cooperation',
+	'declaration',
+	'partnership',
+	'chairmanship',
+	'jair_bolsonaro'
     ]
   end
 
