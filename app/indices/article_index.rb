@@ -1,11 +1,11 @@
-﻿ThinkingSphinx::Index.define(
+ThinkingSphinx::Index.define(
   :article, :name => 'ind', :with => :active_record
   ) do
     # fields
     indexes title, :sortable => true
     indexes country, :sortable => true
     indexes keywords
-    indexes title_rus
+    indexes title_rus, :sortable => true
     indexes category, :sortable => true
     indexes text
     indexes date
