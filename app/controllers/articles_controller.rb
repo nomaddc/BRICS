@@ -71,7 +71,8 @@ class ArticlesController < ApplicationController
 	'declaration',
 	'partnership',
 	'chairmanship',
-	'jair_bolsonaro'
+  'jair_bolsonaro',
+  'covid-19'
     ]
     @article = Article.new
     respond_to do |format|
@@ -132,7 +133,8 @@ class ArticlesController < ApplicationController
 	'declaration',
 	'partnership',
 	'chairmanship',
-	'jair_bolsonaro'
+	'jair_bolsonaro',
+  'covid-19'
     ]
   end
 

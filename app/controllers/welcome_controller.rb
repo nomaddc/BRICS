@@ -57,7 +57,8 @@
 	'declaration',
 	'partnership',
 	'chairmanship',
-	'jair_bolsonaro'
+	'jair_bolsonaro',
+  'covid-19'
     ]
     @keywordslst.sort!
 	
