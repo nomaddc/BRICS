@@ -18,6 +18,24 @@
     }
 <% end %>
 
+<style>
+div.a {
+  text-align: center;
+}
+
+div.b {
+  text-align: left;
+}
+
+div.c {
+  text-align: right;
+} 
+
+div.d {
+  text-align: justify;
+} 
+</style>
+
 <div class="container-fluid">
 
   <div class="row">
@@ -36,7 +54,7 @@
       <h5>Version: rel-05-17-2021</h5>
     </div>
     <div class="col-6 col-md-4">
-      <p class="text-end"><h4><%= link_to 'Switch to Russian', :index_rus %></h4></p>
+      <div class="c"><h4><%= link_to 'Switch to Russian', :index_rus %></h4></p>
     </div>
   </div>
 
